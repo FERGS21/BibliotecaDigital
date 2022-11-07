@@ -2,6 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RolController;
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\PersonaController;
+use App\Http\Controllers\EdicioneController;
+use App\Http\Controllers\EditorialeController;
+use App\Http\Controllers\AreaController;
+use App\Http\Controllers\AutoreController;
+use App\Http\Controllers\LibroController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,18 +27,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware'=>['auth']],function () {
+    Route::resource('roles', RolController::class);
+    Route::resource('usuarios', UsuarioController::class);
+    Route::resource('personas', PersonaController::class);
+    Route::resource('ediciones', EdicioneController::class);
+    Route::resource('editoriales', EditorialeController::class);
+    Route::resource('areas', AreaController::class);
+    Route::resource('autores', AutoreController::class);
+    Route::resource('libros', LibroController::class);
+});
