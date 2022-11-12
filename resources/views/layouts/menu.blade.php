@@ -48,8 +48,13 @@
     
     @can('ver-libro')
     <a class="nav-link" href="/libros">
-    <i class="fa fa-address-book" aria-hidden="true"></i>
-  <span>Libros</span>
+        <i class="fa fa-book f-left" ></i><span>Libros</span>
+    </a>
+    @endcan
+
+    @can('ver-asignaautor')
+    <a class="nav-link" href="/asignaautores">
+        <i class="fa fa-book f-left" ></i><span>Asignacion de Autor(s)</span>
     </a>
     @endcan
 </li>

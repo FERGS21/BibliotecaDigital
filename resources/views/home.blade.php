@@ -131,9 +131,26 @@
                                                  use App\Models\Libro;
                                                 $cant_libros = Libro::count();                                                
                                                 @endphp @can('ver-libro')
-                                                <h2 class="text-right"><i class="fa fa-address-book"></i>
+                                                <h2 class="text-right"><i class="fa fa-book f-left" ></i>
                                                 <span>{{$cant_libros}}</span></h2>
                                                 <p class="m-b-0 text-right"><a href="/libros" class="text-white">Ver más</a></p>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>@endcan
+
+                                    @can('ver-asignaautor')
+                                    <div class="col-md-3 col-xl-3">
+                                        <div class="bg-c-blue order-card">
+                                            <div class="card-block">
+                                                <h5>Asignacion de autores</h5>  @endcan                                             
+                                                @php
+                                                 use App\Models\Asignaautore;
+                                                $cant_asignaautores = Asignaautore::count();                                                
+                                                @endphp @can('ver-asignaautor')
+                                                <h2 class="text-right"><i class="fa fa-book f-left" ></i>
+                                                <span>{{$cant_asignaautores}}</span></h2>
+                                                <p class="m-b-0 text-right"><a href="/asignaautores" class="text-white">Ver más</a></p>
                                                 
                                             </div>
                                         </div>
