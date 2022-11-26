@@ -1,6 +1,6 @@
 @extends('layouts.auth_app')
 @section('title')
-    Admin Login
+    Iniciar sesión
 @endsection
 @section('content')
     <div class="card card-primary">
@@ -19,7 +19,7 @@
                     </div>
                 @endif
                 <div class="form-group">
-                    <label for="email">Correo</label>
+                    <label for="email">Correo electrónico</label>
                     <input aria-describedby="emailHelpBlock" id="email" type="email"
                            class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
                            placeholder="Introducir correo" tabindex="1"
@@ -32,12 +32,7 @@
 
                 <div class="form-group">
                     <div class="d-block">
-                        <label for="password" class="control-label">contraseña</label>
-                        <div class="float-right">
-                            <a href="{{ route('password.request') }}" class="text-small">
-                            ¿Has olvidado tu contraseña?
-                            </a>
-                        </div>
+                        <label for="password" class="control-label">Contraseña</label>
                     </div>
                     <input aria-describedby="passwordHelpBlock" id="password" type="password"
                            value="{{ (Cookie::get('password') !== null) ? Cookie::get('password') : null }}"
@@ -55,11 +50,17 @@
                                id="remember"{{ (Cookie::get('remember') !== null) ? 'checked' : '' }}>
                         <label class="custom-control-label" for="remember">Recordar contraseña</label>
                     </div>
+                    <div class="float-right">
+                            <a href="{{ route('password.request') }}" class="text-small">
+                            ¿Has olvidado tu contraseña?
+                            </a>
+                        </div>
                 </div>
+
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                        Acceso
+                        Acceder
                     </button>
                 </div>
             </form>

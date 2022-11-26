@@ -1,6 +1,6 @@
 @extends('layouts.auth_app')
 @section('title')
-    Register
+    Registro
 @endsection
 @section('content')
     <div class="card card-primary">
@@ -40,7 +40,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="password" class="control-label">contraseña
+                            <label for="password" class="control-label">Contraseña
                                 :</label><span
                                     class="text-danger">*</span>
                             <input id="password" type="password"
@@ -54,7 +54,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="password_confirmation"
-                                   class="control-label">Confirmas contraseña:</label><span
+                                   class="control-label">Confirmar contraseña:</label><span
                                     class="text-danger">*</span>
                             <input id="password_confirmation" type="password" placeholder="Confirmar contraseña"
                                    class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid': '' }}"
