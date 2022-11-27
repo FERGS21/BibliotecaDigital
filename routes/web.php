@@ -11,6 +11,7 @@ use App\Http\Controllers\EditorialeController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\AutoreController;
 use App\Http\Controllers\LibroController;
+use App\Http\Controllers\AsignaautoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,4 +41,5 @@ Route::group(['middleware'=>['auth']],function () {
     Route::resource('areas', AreaController::class);
     Route::resource('autores', AutoreController::class);
     Route::resource('libros', LibroController::class);
+    Route::resource('asignaautores', AsignaautoreController::class);
 });
