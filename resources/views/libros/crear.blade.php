@@ -7,7 +7,9 @@
         </div>
         <div class="section-body">
             <div class="row">
-                <div class="col-lg-12">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-10">
                     <div class="card">
                         <div class="card-body">     
 
@@ -26,45 +28,53 @@
                     <form action="{{ route('libros.store') }}" method="POST">
                         @csrf
                         <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="col-xs-12 col-sm-12 col-md-6">
                                 <div class="form-group">
                                    <label for="titulo">Titulo</label>
                                    <input type="text" name="titulo" class="form-control">
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="col-xs-12 col-sm-12 col-md-3">
                                 <div class="form-group">
                                    <label for="titulo">Paginas</label>
                                    <input type="text" name="no_paginas" class="form-control">
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="col-xs-12 col-sm-12 col-md-3">
                                 <div class="form-group">
                                    <label for="titulo">ISBN</label>
                                    <input type="text" name="isbn" class="form-control">
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="col-xs-12 col-sm-12 col-md-3">
                                 <div class="form-group">
                                    <label for="titulo">Año de Edicion</label>
                                    <input type="text" name="anio_edicion" class="form-control">
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="col-xs-12 col-sm-12 col-md-2">
                                 <div class="form-group">
                                     {{ Form::label('Editorial') }}
                                     {{ Form::select('id_editorial', $editoriales, $libro->id_editorial, ['class' => 'form-control' . ($errors->has('id_editorial') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona']) }}
                                     {!! $errors->first('id_editorial', '<div class="invalid-feedback">:message</div>') !!}
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="col-xs-12 col-sm-12 col-md-1">
+                                <div>
+                                @can('crear-edicion')
+                                <a class="fa fa-book f-left" href="{{ route('ediciones.create') }}">+</a>
+                                @endcan
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-3">
                                 <div class="form-group">
                                     {{ Form::label('Edicion') }}
                                     {{ Form::select('id_edicion', $ediciones, $libro->id_edicion, ['class' => 'form-control' . ($errors->has('id_edicion') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona']) }}
                                     {!! $errors->first('id_edicion', '<div class="invalid-feedback">:message</div>') !!}
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="col-xs-12 col-sm-12 col-md-3">
                                 <div class="form-group">
                                     {{ Form::label('Area') }}
                                     {{ Form::select('id_area', $areas, $libro->id_area, ['class' => 'form-control' . ($errors->has('id_area') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona']) }}

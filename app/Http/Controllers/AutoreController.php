@@ -35,6 +35,7 @@ class AutoreController extends Controller
     {
         return view('autores.crear');
     }
+    
 
     /**
      * Store a newly created resource in storage.
