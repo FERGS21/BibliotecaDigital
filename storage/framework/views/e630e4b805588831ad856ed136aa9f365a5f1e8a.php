@@ -29,31 +29,31 @@
 
                         <?php echo method_field('PUT'); ?>
                         <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="col-xs-12 col-sm-12 col-md-6">
                                 <div class="form-group">
                                    <label for="titulo">Titulo</label>
                                    <input type="text" name="titulo" class="form-control" value="<?php echo e($libro->titulo); ?>">
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="col-xs-12 col-sm-12 col-md-3">
                                 <div class="form-group">
                                    <label for="titulo">Paginas</label>
                                    <input type="text" name="no_paginas" class="form-control" value="<?php echo e($libro->no_paginas); ?>">
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="col-xs-12 col-sm-12 col-md-3">
                                 <div class="form-group">
                                    <label for="titulo">ISBN</label>
                                    <input type="text" name="isbn" class="form-control" value="<?php echo e($libro->isbn); ?>">
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="col-xs-12 col-sm-12 col-md-3">
                                 <div class="form-group">
                                    <label for="titulo">Año de Edicion</label>
                                    <input type="text" name="anio_edicion" class="form-control" value="<?php echo e($libro->anio_edicion); ?>">
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="col-xs-12 col-sm-12 col-md-3">
                                 <div class="form-group">
                                     <?php echo e(Form::label('Editorial')); ?>
 
@@ -63,7 +63,7 @@
 
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="col-xs-12 col-sm-12 col-md-3">
                                 <div class="form-group">
                                     <?php echo e(Form::label('Edicion')); ?>
 
@@ -73,7 +73,7 @@
 
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="col-xs-12 col-sm-12 col-md-3">
                                 <div class="form-group">
                                     <?php echo e(Form::label('Area')); ?>
 
@@ -82,8 +82,22 @@
                                     <?php echo $errors->first('id_area', '<div class="invalid-feedback">:message</div>'); ?>
 
                                 </div>
-                                <button type="submit" class="btn btn-primary">Guardar</button> 
                             </div>
+                            <div class=" col-xs-12 col-sm-12 col-md-8">
+                                <div class="form-group">
+                                    <?php echo e(Form::label('Selecciona Autor(es)')); ?>
+
+                                    <select title="Seleccionar autor(es)" name="autores[]" id="autores" class="select2 form-control"   multiple require>
+                                           <?php $__currentLoopData = $lisautores; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $autores): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                           <option value="<?php echo e($autores->id); ?>">  <?php echo e($autores->nombre.' '.$autores->ap .''.$autores->am); ?> </option>
+                                           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </select> 
+                                </div>                          
+                            </div> 
+                            <div class=" col-xs-12 col-sm-12 col-md-5"></div>
+                            <div class="col-xs-12 col-sm-12 col-md-2">
+                                 <button type="submit" class="btn btn-primary">Guardar</button> 
+                            </div> 
                     </form>
 
                         </div>

@@ -14,11 +14,6 @@
         <i class=" fas fa-user-lock"></i><span>Roles</span>
     </a>
     <?php endif; ?>
-    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('ver-libro')): ?>
-    <a class="nav-link" href="/libros/create">
-        <i class="fa fa-book f-left" ></i><span> Registrar Libro</span>
-    </a>
-    <?php endif; ?>
 
     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('ver-edicion')): ?>
     <a class="nav-link" href="/ediciones">

@@ -101,7 +101,8 @@ class LibroController extends Controller
         $ediciones=Edicione::pluck('no_edicion','id');
         $editoriales=Editoriale::pluck('nombre_editorial','id');
         $areas=Area::pluck('nombre_area','id');
-        return view('libros.editar',compact('libro','ediciones','editoriales','areas'));
+        $lisautores=Autore::all();
+        return view('libros.editar',compact('libro','ediciones','editoriales','areas','lisautores'));
     }
 
     /**

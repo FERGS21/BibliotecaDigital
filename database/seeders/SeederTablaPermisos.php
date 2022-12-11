@@ -30,12 +30,6 @@ class SeederTablaPermisos extends Seeder
             'editar-rol',
             'borrar-rol',
 
-            //Operaciones sobre tabla personas
-            'ver-persona',
-            'crear-persona',
-            'editar-persona',
-            'borrar-persona',
-
             //operaciones sobre la tabla ediciones
             'ver-edicion',
             'crear-edicion',

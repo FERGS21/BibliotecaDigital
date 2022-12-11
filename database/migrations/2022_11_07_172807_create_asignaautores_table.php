@@ -20,8 +20,8 @@ class CreateAsignaautoresTable extends Migration
             $table->unsignedBigInteger('libro_id');
             $table->foreign('libro_id')->references('id')->on('libros')->onDelete("cascade");
             //autores
-            $table->unsignedbigInteger('autor_id');
-            $table->foreign('autor_id')->references('id')->on('autores')->onDelete("cascade");
+            $table->unsignedbigInteger('autore_id');
+            $table->foreign('autore_id')->references('id')->on('autores')->onDelete("cascade");
             $table->timestamps();
         });
     }
