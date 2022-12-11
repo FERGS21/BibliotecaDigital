@@ -37,29 +37,17 @@
  
                             <div class="col-md-8">
                                     <label for="">Selecciona Autor(s)</label>
-                                    <select name="autores[]" class="select2 form-control"   multiple="multiple">
-                                        <?php
-                                            $con = mysqli_connect("localhost","root","","biblioteca");
-                                            $query  = "SELECT * FROM autores";
-                                            $query_run = mysqli_query($con, $query);
-                                            if(mysqli_num_rows($query_run ) > 0)
-                                            {
-                                                foreach($query_run as $autor)
-                                                {
-                                                    ?>
-                                                        <option value="<?php echo $autor['id']; ?>"> <?php echo $autor['nombre'].' '.$autor['ap'].' '.$autor['am'];?> </option>
-                                                    <?php   
-                                                }
-                                                
-                                            }
-                                            else 
-                                            {
-                                                echo "No existen autores";
-                                            }
-                                        ?>
-                                    </select>                            
+                                    <select title="Seleccionar autor(es)" name="id_autor[]" id="autores" class="select2 form-control"   multiple require>
+                                           @foreach($lisautores as $autores)
+                                           <option value="{{$autores->id}}">  {{$autores->nombre.' '.$autores->ap .''.$autores->am}} </option>
+                                           @endforeach
+                                    </select>                           
                             </div>   
-                            <div></div>                        
+                            <div class=" col-lg-5">
+                            </div>
+                            <div col-lg-2>
+                                <button type="submin"  class="btn btn-primary btn-block"> Guardar</button>
+                            </div>                       
                     </form>
 
                         </div>

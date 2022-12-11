@@ -80,8 +80,21 @@
                                     {{ Form::select('id_area', $areas, $libro->id_area, ['class' => 'form-control' . ($errors->has('id_area') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona']) }}
                                     {!! $errors->first('id_area', '<div class="invalid-feedback">:message</div>') !!}
                                 </div>
-                                <button type="submit" class="btn btn-primary">Guardar</button> 
-                            </div>                            
+                            </div>    
+                            <div class=" col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    {{ Form::label('Selecciona Autor(es)') }}
+                                    <select title="Seleccionar autor(es)" name="id_autor[]" id="autores" class="select2 form-control"   multiple require>
+                                           @foreach($lisautores as $autores)
+                                           <option value="{{$autores->id}}">  {{$autores->nombre.' '.$autores->ap .''.$autores->am}} </option>
+                                           @endforeach
+                                    </select> 
+                                </div>                          
+                            </div> 
+                            <div class=" col-xs-12 col-sm-12 col-md-5"></div>
+                            <div class="col-xs-12 col-sm-12 col-md-2">
+                                 <button type="submit" class="btn btn-primary">Guardar</button> 
+                            </div>                          
                     </form>
 
                         </div>

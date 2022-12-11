@@ -64,6 +64,22 @@ class SeederTablaPermisos extends Seeder
             'crear-libro',
             'editar-libro',
             'borrar-libro',
+            //operaciones sobre la tabla autores
+            'ver-arignaautor',
+            'crear-arignaautor',
+            'editar-arignaautor',
+            'borrar-arignaautor',
+            //operaciones sobre la tabla autores
+            'ver-ejemplar',
+            'crear-ejemplar',
+            'editar-ejemplar',
+            'borrar-ejemplar',
+            //operaciones sobre la tabla autores
+            'ver-pertamo',
+            'crear-pertamo',
+            'editar-pertamo',
+            'borrar-pertamo',
+            
                       
         ];
 

@@ -15,7 +15,7 @@ class CreateAsignaautoresTable extends Migration
     {
         Schema::create('asignaautores', function (Blueprint $table) {
             $table->engine="InnoDB";
-            $table->id();
+            $table->bigIncrements('id');
             $table->bigInteger('id_libro')->unsigned();
             $table->bigInteger('id_autor')->unsigned();
             $table->timestamps();

@@ -12,4 +12,8 @@ class Autore extends Model
         'ap',
         'am',
     ];
+
+    public function libros(){
+        return $this->belogsToMaty(Autore::class);
+    }
 }

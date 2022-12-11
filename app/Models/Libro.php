@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Libro extends Model
 {
     use HasFactory;
+    public function autores(){
+        return $this->belogsToMaty(Libro::class);
+    }
+    
     protected $fillable = [
         'titulo',
         'no_paginas',

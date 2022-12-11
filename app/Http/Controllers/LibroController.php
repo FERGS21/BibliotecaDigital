@@ -7,6 +7,7 @@ use App\Models\Libro;
 use App\Models\Edicione;
 use App\Models\Editoriale;
 use App\Models\Area;
+use App\Models\Autore;
 
 
 class LibroController extends Controller
@@ -42,7 +43,8 @@ class LibroController extends Controller
         $ediciones=Edicione::pluck('no_edicion','id');
         $editoriales=Editoriale::pluck('nombre_editorial','id');
         $areas=Area::pluck('nombre_area','id');
-        return view('libros.crear', compact('libro','ediciones','editoriales','areas'));
+        $lisautores=Autore::all();
+        return view('libros.crear', compact('libro','ediciones','editoriales','areas', 'lisautores'));
 
         //return view('libros.crear');
     }
@@ -55,17 +57,22 @@ class LibroController extends Controller
      */
     public function store(Request $request)
     {
-        request()-> validate([
-            'titulo'=> 'required',
+        dd($request->all());
+        $rules = [
+            'titulo'=> 'required | min:3',
             'no_paginas'=> 'required',
             'isbn'=> 'required',
             'anio_edicion'=> 'required',
             'id_editorial'=> 'required',
             'id_edicion'=> 'required',
             'id_area'=> 'required',
-        ]);
-        Libro::create($request->all());
-        return redirect()->route('libros.index');
+        ];
+        $this->validate($request, $rules);
+        Libro::create(
+            $request->only('titulo','no_paginas','isbn','anio_edicion','id_editorial','id_edicion','id_area')
+        );
+        $notificacion='El libro se a registrado correctamente';
+        return redirect()->route('libros.index')->with(compact('notificacion'));
 
     }
 

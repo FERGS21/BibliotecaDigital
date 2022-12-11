@@ -41,7 +41,8 @@ class AsignaautoreController extends Controller
         $asignaautore = new Asignaautore();
         $libros=Libro::pluck('titulo','id');
         $autores=Autore::pluck('nombre','id');
-        return view('asignaautores.crear', compact('asignaautore','libros','autores'));
+        $lisautores = Autore::all();
+        return view('asignaautores.crear', compact('asignaautore','libros','autores','lisautores'));
     }
 
     /**
