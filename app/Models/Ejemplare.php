@@ -11,11 +11,17 @@ class Ejemplare extends Model
     protected $fillable = [
         'id_libro',
         'copia',
+        'cantidad',
     ];
 
     public function libro()
     {
         return $this->belongsTo(libro::class,'id_libro');
+    }
+
+    public function prestamo()
+    {
+        return $this->HasMany(Prestamo::class);
     }
 
 }

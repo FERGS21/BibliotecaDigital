@@ -29,7 +29,7 @@
                             @foreach ($ejemplares as $ejemplar)
                             <tr>
                                 <td style="display: none;">{{ $ejemplar->id }}</td>                                
-                                <td>{{ $ejemplar->id_libro }}</td>
+                                <td>{{ $ejemplar->libro->titulo }}</td>
                                 <td>{{ $ejemplar->copia }}</td>
 
                                 <td>

@@ -29,7 +29,7 @@
                             <?php $__currentLoopData = $ejemplares; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ejemplar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
                                 <td style="display: none;"><?php echo e($ejemplar->id); ?></td>                                
-                                <td><?php echo e($ejemplar->id_libro); ?></td>
+                                <td><?php echo e($ejemplar->libro->titulo); ?></td>
                                 <td><?php echo e($ejemplar->copia); ?></td>
 
                                 <td>

@@ -50,6 +50,11 @@
         <i class="fa fa-book f-left" ></i><span>Ejemplares</span>
     </a>
     @endcan
+    @can('ver-prestamo')
+    <a class="nav-link" href="/prestamos">
+        <i class="fa fa-book f-left" ></i><span>Prestamos</span>
+    </a>
+    @endcan
 
 
 </li>

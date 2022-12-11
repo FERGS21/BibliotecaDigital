@@ -13,6 +13,8 @@ use App\Http\Controllers\AutoreController;
 use App\Http\Controllers\LibroController;
 use App\Http\Controllers\AsignaautoreController;
 use App\Http\Controllers\EjemplareController;
+use App\Http\Controllers\PrestamoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +46,5 @@ Route::group(['middleware'=>['auth']],function () {
     Route::resource('libros', LibroController::class);
     Route::resource('asignaautores', AsignaautoreController::class);
     Route::resource('ejemplares', EjemplareController::class);
+    Route::resource('prestamos', PrestamoController::class);
 });

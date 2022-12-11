@@ -3,21 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\DAtabase\Eloquent\Builder;
+use App\Http\Requests\ValidacionPrestamo;
 use App\Models\Libro;
 use App\Models\Edicione;
 use App\Models\Editoriale;
 use App\Models\Area;
 use App\Models\Autore;
+use App\Models\Prestamo;
+use App\Models\Ejemplare;
 
 class PrestamoController extends Controller
 {
     function __construct()
     {
-        $this->middleware('permission:ver-libro|crear-libro|editar-libro',['only'=>['index']]);
-        $this->middleware('permission:ver-libro',['only'=>['show']]);
-        $this->middleware('permission:crear-libro',['only'=>['create','store']]);
-        $this->middleware('permission:editar-libro',['only'=>['edit','update']]);
-        $this->middleware('permission:borrar-libro',['only'=>['destroy']]);
+        $this->middleware('permission:ver-prestamo|crear-prestamo|editar-prestamo',['only'=>['index']]);
+        $this->middleware('permission:ver-prestamo',['only'=>['show']]);
+        $this->middleware('permission:crear-prestamo',['only'=>['create','store']]);
+        $this->middleware('permission:editar-prestamo',['only'=>['edit','update']]);
+        $this->middleware('permission:borrar-prestamo',['only'=>['destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -26,8 +30,8 @@ class PrestamoController extends Controller
      */
     public function index()
     {
-        $libros = Libro::paginate(10);
-        return view ('libros.index',compact('libros'));
+        $prestamos = Prestamo::paginate(10);
+        return view ('prestamos.index',compact('prestamos'));
 
     }
 
@@ -38,14 +42,21 @@ class PrestamoController extends Controller
      */
     public function create()
     {
-        $libro = new Libro();
-        $ediciones=Edicione::pluck('no_edicion','id');
-        $editoriales=Editoriale::pluck('nombre_editorial','id');
-        $areas=Area::pluck('nombre_area','id');
-        $lisautores=Autore::all();
-        return view('libros.crear', compact('libro','ediciones','editoriales','areas', 'lisautores'));
+        $ejemplares = Ejemplare::withCount(['prestamo'=>function(Builder $query)
+        {
+            $query->whereNull('fecha_devolucion');
+        }])->get();
 
-        //return view('libros.crear');
+        //dd($ejemplares);
+
+        return view('prestamos.crear', compact('ejemplares'));
+        /*
+        $prestamo = new Prestamo();
+        $ejemplares=Ejemplare::pluck('copia','id');;
+        return view('prestamos.crear', compact('prestamo','ejemplares'));
+
+        
+        */
     }
 
     /**
@@ -54,27 +65,29 @@ class PrestamoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionPrestamo $request)
     {
-        
+        $ejemplar = Ejemplare::findOrFail($request->ejemplare_id);
+        $ejemplar->prestamo()->create(
+            [
+                'fecha_prestamo'=>$request->fecha_prestamo,
+                'id_usuario'=>auth()->user()->id
+            ]
+            );
+        //dd($request->all());
+        /*
         $rules = [
-            'titulo'=> 'required | min:3',
-            'no_paginas'=> 'required',
-            'isbn'=> 'required',
-            'anio_edicion'=> 'required',
-            'id_editorial'=> 'required',
-            'id_edicion'=> 'required',
-            'id_area'=> 'required',
+            'id_ejemplar'=> 'required ',
+            'id_usuario'=> 'required ',
+            'fecha_prestamo'=> 'required ',
         ];
         $this->validate($request, $rules);
         
-        $libro=Libro::create(
-            $request->only('titulo','no_paginas','isbn','anio_edicion','id_editorial','id_edicion','id_area')
+        Ejemplare::create(
+            $request->only('id_ejemplar','id_usuario','fecha_prestamo')
         );
-
-        $libro->autores()->attach($request->input('autores'));
-
-        return redirect()->route('libros.index');
+        */
+        return redirect()->route('prestamos.index');
 
     }
 
@@ -84,7 +97,7 @@ class PrestamoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id_libro)
+    public function show($id_ejemplar)
     {
         //
     }
@@ -95,13 +108,11 @@ class PrestamoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Libro $libro)
+    public function edit(Ejemplare $ejemplare)
     {
-        $ediciones=Edicione::pluck('no_edicion','id');
-        $editoriales=Editoriale::pluck('nombre_editorial','id');
-        $areas=Area::pluck('nombre_area','id');
-        $lisautores=Autore::all();
-        return view('libros.editar',compact('libro','ediciones','editoriales','areas','lisautores'));
+        $libros=Libro::pluck('titulo','id');
+
+        return view('ejemplares.editar',compact('ejemplare', 'libros'));
     }
 
     /**
@@ -111,20 +122,16 @@ class PrestamoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Libro $libro)
+    public function update(Request $request, Ejemplare $ejemplare)
     {
         request()-> validate([
-            'titulo'=> 'required',
-            'no_paginas'=> 'required',
-            'isbn'=> 'required',
-            'anio_edicion'=> 'required',
-            'id_editorial'=> 'required',
-            'id_edicion'=> 'required',
-            'id_area'=> 'required',
+            'id_libro'=> 'required',
+            'copia'=> 'required',
         ]);
 
-        $libro ->update($request->all());
-        return redirect()->route('libros.index');
+        $ejemplare ->update($request->all());
+
+        return redirect()->route('ejemplares.index');
     }
 
     /**
@@ -133,10 +140,10 @@ class PrestamoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Libro $libro)
+    public function destroy(Ejemplare $ejemplare)
     {
-        $libro->delete();
+        $ejemplare->delete();
     
-        return redirect()->route('libros.index');
+        return redirect()->route('ejemplares.index');
     }
 }
