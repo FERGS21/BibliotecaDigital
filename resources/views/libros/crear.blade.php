@@ -61,8 +61,8 @@
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-1">
                                 <div>
-                                @can('crear-edicion')
-                                <a class="fa fa-book f-left" href="{{ route('ediciones.create') }}">+</a>
+                                @can('crear-editorial')
+                                <a class="fa fa-book f-left" href="{{ route('editoriales.create') }}">+</a>
                                 @endcan
                                 </div>
                             </div>
@@ -74,6 +74,13 @@
                                     {!! $errors->first('id_edicion', '<div class="invalid-feedback">:message</div>') !!}
                                 </div>
                             </div>
+                            <div class="col-xs-12 col-sm-12 col-md-1">
+                                <div>
+                                @can('crear-edicion')
+                                <a class="fa fa-book f-left" href="{{ route('ediciones.create') }}">+</a>
+                                @endcan
+                                </div>
+                            </div>
                             <div class="col-xs-12 col-sm-12 col-md-3">
                                 <div class="form-group">
                                     {{ Form::label('Area') }}
@@ -81,16 +88,30 @@
                                     {!! $errors->first('id_area', '<div class="invalid-feedback">:message</div>') !!}
                                 </div>
                             </div>    
-                            <div class=" col-xs-12 col-sm-12 col-md-12">
+                            <div class="col-xs-12 col-sm-12 col-md-1">
+                                <div>
+                                @can('crear-area')
+                                <a class="fa fa-book f-left" href="{{ route('areas.create') }}">+</a>
+                                @endcan
+                                </div>
+                            </div>
+                            <div class=" col-xs-12 col-sm-12 col-md-7">
                                 <div class="form-group">
                                     {{ Form::label('Selecciona Autor(es)') }}
-                                    <select title="Seleccionar autor(es)" name="id_autor[]" id="autores" class="select2 form-control"   multiple require>
+                                    <select title="Seleccionar autor(es)" name="autores[]" id="autores" class="select2 form-control"   multiple require>
                                            @foreach($lisautores as $autores)
                                            <option value="{{$autores->id}}">  {{$autores->nombre.' '.$autores->ap .''.$autores->am}} </option>
                                            @endforeach
                                     </select> 
                                 </div>                          
                             </div> 
+                            <div class="col-xs-12 col-sm-12 col-md-1">
+                                <div>
+                                @can('crear-autor')
+                                <a class="fa fa-book f-left" href="{{ route('autores.create') }}">+</a>
+                                @endcan
+                                </div>
+                            </div>
                             <div class=" col-xs-12 col-sm-12 col-md-5"></div>
                             <div class="col-xs-12 col-sm-12 col-md-2">
                                  <button type="submit" class="btn btn-primary">Guardar</button> 

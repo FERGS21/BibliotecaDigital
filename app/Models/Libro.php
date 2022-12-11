@@ -8,9 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Libro extends Model
 {
     use HasFactory;
-    public function autores(){
-        return $this->belogsToMaty(Libro::class);
-    }
+
     
     protected $fillable = [
         'titulo',
@@ -36,5 +34,7 @@ class Libro extends Model
     {
         return $this->belongsTo(Area::class,'id_area');
     }
-    
+    public function autores(){
+        return $this->belongsToMany(Autore::class);
+    }
 }

@@ -14,10 +14,9 @@
         <i class=" fas fa-user-lock"></i><span>Roles</span>
     </a>
     <?php endif; ?>
-
-    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('ver-persona')): ?>
-    <a class="nav-link" href="/personas">
-        <i class="fas fa-user-edit"></i>  <span>Personas</span>
+    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('ver-libro')): ?>
+    <a class="nav-link" href="/libros/create">
+        <i class="fa fa-book f-left" ></i><span> Registrar Libro</span>
     </a>
     <?php endif; ?>
 
@@ -52,9 +51,4 @@
     </a>
     <?php endif; ?>
 
-    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('ver-asignaautor')): ?>
-    <a class="nav-link" href="/asignaautores">
-        <i class="fa fa-book f-left" ></i><span>Asignacion de Autor(s)</span>
-    </a>
-    <?php endif; ?>
 </li><?php /**PATH C:\Users\FER\Documents\5TO_SEMESTRE\BASE_DE_DATOS\BibliotecaDigital\resources\views/layouts/menu.blade.php ENDPATH**/ ?>

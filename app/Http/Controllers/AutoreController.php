@@ -51,7 +51,7 @@ class AutoreController extends Controller
             'am' => 'required',
         ]);
         Autore::create($request->all());
-        return redirect()->route('autores.index');
+        return redirect()->route('libros.index');
 
     }
 

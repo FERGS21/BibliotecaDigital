@@ -14,10 +14,9 @@
         <i class=" fas fa-user-lock"></i><span>Roles</span>
     </a>
     @endcan
-
-    @can('ver-persona')
-    <a class="nav-link" href="/personas">
-        <i class="fas fa-user-edit"></i>  <span>Personas</span>
+    @can('ver-libro')
+    <a class="nav-link" href="/libros/create">
+        <i class="fa fa-book f-left" ></i><span> Registrar Libro</span>
     </a>
     @endcan
 
@@ -52,9 +51,4 @@
     </a>
     @endcan
 
-    @can('ver-asignaautor')
-    <a class="nav-link" href="/asignaautores">
-        <i class="fa fa-book f-left" ></i><span>Asignacion de Autor(s)</span>
-    </a>
-    @endcan
 </li>

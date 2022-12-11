@@ -49,7 +49,7 @@ class EdicioneController extends Controller
         ]);
         
         Edicione::create($request->all());
-        return redirect()->route('ediciones.index');
+        return redirect()->route('libros.index');
     }
 
     /**

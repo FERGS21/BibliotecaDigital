@@ -50,8 +50,9 @@ class EditorialeController extends Controller
         ]);
         
         Editoriale::create($request->all());
-        return redirect()->route('editoriales.index');
+        return redirect()->route('libros.index');
     }
+    
 
     /**
      * Display the specified resource.

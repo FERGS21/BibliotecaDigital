@@ -57,7 +57,7 @@ class LibroController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        
         $rules = [
             'titulo'=> 'required | min:3',
             'no_paginas'=> 'required',
@@ -68,11 +68,14 @@ class LibroController extends Controller
             'id_area'=> 'required',
         ];
         $this->validate($request, $rules);
-        Libro::create(
+        
+        $libro=Libro::create(
             $request->only('titulo','no_paginas','isbn','anio_edicion','id_editorial','id_edicion','id_area')
         );
-        $notificacion='El libro se a registrado correctamente';
-        return redirect()->route('libros.index')->with(compact('notificacion'));
+
+        $libro->autores()->attach($request->input('autores'));
+
+        return redirect()->route('libros.index');
 
     }
 

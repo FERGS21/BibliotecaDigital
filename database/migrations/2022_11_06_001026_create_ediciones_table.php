@@ -14,7 +14,7 @@ class CreateEdicionesTable extends Migration
     public function up()
     {
         Schema::create('ediciones', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string ('no_edicion');
             $table->timestamps();
         });

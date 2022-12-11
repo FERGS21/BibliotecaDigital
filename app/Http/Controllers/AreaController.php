@@ -48,7 +48,7 @@ class AreaController extends Controller
         ]);
         
         Area::create($request->all());
-        return redirect()->route('areas.index');
+        return redirect()->route('libros.index');
     }
 
     /**

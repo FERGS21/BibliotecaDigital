@@ -14,10 +14,10 @@ class CreateAutoresTable extends Migration
     public function up()
     {
         Schema::create('autores', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('nombre');
-            $table->string('ap');
-            $table->string('am');
+            $table->string('ap')->nullable();
+            $table->string('am')->nullable();
             $table->timestamps();
         });
     }

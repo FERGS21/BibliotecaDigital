@@ -14,6 +14,6 @@ class Autore extends Model
     ];
 
     public function libros(){
-        return $this->belogsToMaty(Autore::class);
+        return $this->belongsToMany(Libro::class);
     }
 }

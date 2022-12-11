@@ -14,8 +14,8 @@ class CreateLibrosTable extends Migration
     public function up()
     {
         Schema::create('libros', function (Blueprint $table) {
-            $table->engine="InnoDB";
-            $table->id();
+        
+            $table->bigIncrements('id');
             $table->string('titulo');
             $table->Integer('no_paginas');
             $table->string('isbn');

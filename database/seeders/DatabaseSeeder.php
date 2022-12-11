@@ -16,17 +16,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $permisos = [
-            //Operaciones sobre tabla roles
-            'ver-rol',
-            'crear-rol',
-            'editar-rol',
-            'borrar-rol',
 
-            //Operacions sobre tabla blogs
-            'ver-blog',
-            'crear-blog',
-            'editar-blog',
-            'borrar-blog'
         ];
 
         foreach($permisos as $permiso) {

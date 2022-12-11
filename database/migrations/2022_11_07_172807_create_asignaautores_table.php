@@ -13,15 +13,16 @@ class CreateAsignaautoresTable extends Migration
      */
     public function up()
     {
-        Schema::create('asignaautores', function (Blueprint $table) {
-            $table->engine="InnoDB";
+        Schema::create('autore_libro', function (Blueprint $table) {
+            
             $table->bigIncrements('id');
-            $table->bigInteger('id_libro')->unsigned();
-            $table->bigInteger('id_autor')->unsigned();
+            //libros
+            $table->unsignedBigInteger('libro_id');
+            $table->foreign('libro_id')->references('id')->on('libros')->onDelete("cascade");
+            //autores
+            $table->unsignedbigInteger('autor_id');
+            $table->foreign('autor_id')->references('id')->on('autores')->onDelete("cascade");
             $table->timestamps();
-
-            $table->foreign('id_libro')->references('id')->on('libros')->onDelete("cascade");
-            $table->foreign('id_autor')->references('id')->on('autores')->onDelete("cascade");
         });
     }
 
@@ -32,6 +33,6 @@ class CreateAsignaautoresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asignaautores');
+        Schema::dropIfExists('autore_libro');
     }
 }

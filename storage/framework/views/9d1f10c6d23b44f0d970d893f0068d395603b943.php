@@ -64,8 +64,8 @@
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-1">
                                 <div>
-                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('crear-edicion')): ?>
-                                <a class="fa fa-book f-left" href="<?php echo e(route('ediciones.create')); ?>">+</a>
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('crear-editorial')): ?>
+                                <a class="fa fa-book f-left" href="<?php echo e(route('editoriales.create')); ?>">+</a>
                                 <?php endif; ?>
                                 </div>
                             </div>
@@ -80,6 +80,13 @@
 
                                 </div>
                             </div>
+                            <div class="col-xs-12 col-sm-12 col-md-1">
+                                <div>
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('crear-edicion')): ?>
+                                <a class="fa fa-book f-left" href="<?php echo e(route('ediciones.create')); ?>">+</a>
+                                <?php endif; ?>
+                                </div>
+                            </div>
                             <div class="col-xs-12 col-sm-12 col-md-3">
                                 <div class="form-group">
                                     <?php echo e(Form::label('Area')); ?>
@@ -90,17 +97,31 @@
 
                                 </div>
                             </div>    
-                            <div class=" col-xs-12 col-sm-12 col-md-12">
+                            <div class="col-xs-12 col-sm-12 col-md-1">
+                                <div>
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('crear-area')): ?>
+                                <a class="fa fa-book f-left" href="<?php echo e(route('areas.create')); ?>">+</a>
+                                <?php endif; ?>
+                                </div>
+                            </div>
+                            <div class=" col-xs-12 col-sm-12 col-md-7">
                                 <div class="form-group">
                                     <?php echo e(Form::label('Selecciona Autor(es)')); ?>
 
-                                    <select title="Seleccionar autor(es)" name="id_autor[]" id="autores" class="select2 form-control"   multiple require>
+                                    <select title="Seleccionar autor(es)" name="autores[]" id="autores" class="select2 form-control"   multiple require>
                                            <?php $__currentLoopData = $lisautores; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $autores): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                            <option value="<?php echo e($autores->id); ?>">  <?php echo e($autores->nombre.' '.$autores->ap .''.$autores->am); ?> </option>
                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select> 
                                 </div>                          
                             </div> 
+                            <div class="col-xs-12 col-sm-12 col-md-1">
+                                <div>
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('crear-autor')): ?>
+                                <a class="fa fa-book f-left" href="<?php echo e(route('autores.create')); ?>">+</a>
+                                <?php endif; ?>
+                                </div>
+                            </div>
                             <div class=" col-xs-12 col-sm-12 col-md-5"></div>
                             <div class="col-xs-12 col-sm-12 col-md-2">
                                  <button type="submit" class="btn btn-primary">Guardar</button> 

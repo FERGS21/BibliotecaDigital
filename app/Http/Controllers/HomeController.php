@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use App\Models\Libro;
 
 class HomeController extends Controller
 {
@@ -24,9 +26,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
 
-      // $request->session()->flush();
-        //session(['Maria'=>'Estudiante']); 
-      // return $request->session()->all();
-        return view('home');
+      $libros = Libro::paginate(10);
+      return view('home',compact('libros'));
     }
 }
