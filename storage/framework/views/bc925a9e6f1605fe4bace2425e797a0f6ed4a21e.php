@@ -45,5 +45,11 @@
         <i class="fa fa-book f-left" ></i><span>Libros</span>
     </a>
     <?php endif; ?>
+    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('ver-ejemplar')): ?>
+    <a class="nav-link" href="/ejemplares">
+        <i class="fa fa-book f-left" ></i><span>Ejemplares</span>
+    </a>
+    <?php endif; ?>
+
 
 </li><?php /**PATH C:\Users\FER\Documents\5TO_SEMESTRE\BASE_DE_DATOS\BibliotecaDigital\resources\views/layouts/menu.blade.php ENDPATH**/ ?>

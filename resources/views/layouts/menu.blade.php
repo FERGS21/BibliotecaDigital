@@ -45,5 +45,11 @@
         <i class="fa fa-book f-left" ></i><span>Libros</span>
     </a>
     @endcan
+    @can('ver-ejemplar')
+    <a class="nav-link" href="/ejemplares">
+        <i class="fa fa-book f-left" ></i><span>Ejemplares</span>
+    </a>
+    @endcan
+
 
 </li>

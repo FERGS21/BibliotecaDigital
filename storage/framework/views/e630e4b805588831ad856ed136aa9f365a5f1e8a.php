@@ -82,6 +82,7 @@
                                     <?php echo $errors->first('id_area', '<div class="invalid-feedback">:message</div>'); ?>
 
                                 </div>
+                                    
                             </div>
                             <div class=" col-xs-12 col-sm-12 col-md-8">
                                 <div class="form-group">

@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Editar Persona</h3>
+            <h3 class="page__heading">Editar Ejemplares</h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -24,66 +24,26 @@
                         @endif
 
 
-                    <form action="{{ route('libros.update',$libro->id) }}" method="POST">
+                    <form action="{{ route('ejemplares.update',$ejemplare->id) }}" method="POST">
                         @csrf
 
                         @method('PUT')
                         <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-3">
+                                <div class="form-group">
+                                    {{ Form::label('Libro') }}
+                                    {{ Form::select('id_libro', $libros, $ejemplare->id_libro, ['class' => 'form-control' . ($errors->has('id_libro') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona']) }}
+                                    {!! $errors->first('id_libro', '<div class="invalid-feedback">:message</div>') !!}
+                                </div>
+                            </div>
+                  
                             <div class="col-xs-12 col-sm-12 col-md-6">
                                 <div class="form-group">
-                                   <label for="titulo">Titulo</label>
-                                   <input type="text" name="titulo" class="form-control" value="{{ $libro->titulo }}">
+                                   <label for="copia">Copia</label>
+                                   <input type="text" name="copia" class="form-control" value="{{ $ejemplare->copia}}">
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-3">
-                                <div class="form-group">
-                                   <label for="titulo">Paginas</label>
-                                   <input type="text" name="no_paginas" class="form-control" value="{{ $libro->no_paginas }}">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-3">
-                                <div class="form-group">
-                                   <label for="titulo">ISBN</label>
-                                   <input type="text" name="isbn" class="form-control" value="{{ $libro->isbn }}">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-3">
-                                <div class="form-group">
-                                   <label for="titulo">Año de Edicion</label>
-                                   <input type="text" name="anio_edicion" class="form-control" value="{{ $libro->anio_edicion }}">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-3">
-                                <div class="form-group">
-                                    {{ Form::label('Editorial') }}
-                                    {{ Form::select('id_editorial', $editoriales, $libro->id_editorial, ['class' => 'form-control' . ($errors->has('id_editorial') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona']) }}
-                                    {!! $errors->first('id_editorial', '<div class="invalid-feedback">:message</div>') !!}
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-3">
-                                <div class="form-group">
-                                    {{ Form::label('Edicion') }}
-                                    {{ Form::select('id_edicion', $ediciones, $libro->id_edicion, ['class' => 'form-control' . ($errors->has('id_edicion') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona']) }}
-                                    {!! $errors->first('id_edicion', '<div class="invalid-feedback">:message</div>') !!}
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-3">
-                                <div class="form-group">
-                                    {{ Form::label('Area') }}
-                                    {{ Form::select('id_area', $areas, $libro->id_area, ['class' => 'form-control' . ($errors->has('id_area') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona']) }}
-                                    {!! $errors->first('id_area', '<div class="invalid-feedback">:message</div>') !!}
-                                </div>
-                            </div>
-                            <div class=" col-xs-12 col-sm-12 col-md-8">
-                                <div class="form-group">
-                                    {{ Form::label('Selecciona Autor(es)') }}
-                                    <select title="Seleccionar autor(es)" name="autores[]" id="autores" class="select2 form-control"   multiple require>
-                                           @foreach($lisautores as $autores)
-                                           <option value="{{$autores->id}}">  {{$autores->nombre.' '.$autores->ap .''.$autores->am}} </option>
-                                           @endforeach
-                                    </select> 
-                                </div>                          
-                            </div> 
+
                             <div class=" col-xs-12 col-sm-12 col-md-5"></div>
                             <div class="col-xs-12 col-sm-12 col-md-2">
                                  <button type="submit" class="btn btn-primary">Guardar</button> 

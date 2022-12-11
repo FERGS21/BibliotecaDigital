@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Libros</h3>
+            <h3 class="page__heading">Ejemplares</h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -12,45 +12,35 @@
                         <div class="card-body">
                 
             
-                        @can('crear-libro')
-                        <a class="btn btn-warning" href="{{ route('libros.create') }}">Nuevo</a>
+                        @can('crear-ejemplar')
+                        <a class="btn btn-warning" href="{{ route('ejemplares.create') }}">Nuevo</a>
                         @endcan
             
                         <table class="table table-striped mt-2">
                                 <thead style="background-color:#6777ef">                                     
                                     <th style="display: none;">ID</th>
-                                    <th style="color:#fff;">Titulo</th>
-                                    <th style="color:#fff;">Paginas</th> 
-                                    <th style="color:#fff;">ISBN</th>
-                                    <th style="color:#fff;">Año Edicion</th>
-                                    <th style="color:#fff;">Editorial</th>
-                                    <th style="color:#fff;">Edicion</th>
-                                    <th style="color:#fff;">Area</th> 
-                                    @can('crear-libro')                                   
+                                    <th style="color:#fff;">Libro</th>
+                                    <th style="color:#fff;">Copia</th> 
+                                    @can('crear-ejemplar')                                   
                                     <th style="color:#fff;">Acciones</th>   
                                     @endcan                                                                
                               </thead>
                               <tbody>
-                            @foreach ($libros as $libro)
+                            @foreach ($ejemplares as $ejemplar)
                             <tr>
-                                <td style="display: none;">{{ $libro->id }}</td>                                
-                                <td>{{ $libro->titulo }}</td>
-                                <td>{{ $libro->no_paginas }}</td>
-                                <td>{{ $libro->isbn }}</td>
-                                <td>{{ $libro->anio_edicion}}</td>
-                                <td>{{ $libro->editorial->nombre_editorial }}</td>
-                                <td>{{ $libro->edicion->no_edicion }}</td>
-                                <td>{{ $libro->area->nombre_area }}</td>
+                                <td style="display: none;">{{ $ejemplar->id }}</td>                                
+                                <td>{{ $ejemplar->id_libro }}</td>
+                                <td>{{ $ejemplar->copia }}</td>
 
                                 <td>
-                                    <form action="{{ route('libros.destroy',$libro->id) }}" method="POST">                                        
-                                        @can('editar-libro')
-                                        <a class="btn btn-info" href="{{ route('libros.edit',$libro->id) }}">Editar</a>
+                                    <form action="{{ route('ejemplares.destroy',$ejemplar->id) }}" method="POST">                                        
+                                        @can('editar-ejemplar')
+                                        <a class="btn btn-info" href="{{ route('ejemplares.edit',$ejemplar->id) }}">Editar</a>
                                         @endcan
 
                                         @csrf
                                         @method('DELETE')
-                                        @can('borrar-libro')
+                                        @can('borrar-ejemplar')
                                         <button type="submit" class="btn btn-danger">Borrar</button>
                                         @endcan
                                     </form>
@@ -62,7 +52,7 @@
 
                         <!-- Ubicamos la paginacion a la derecha -->
                         <div class="pagination justify-content-end">
-                            {!! $libros->links() !!}
+                            {!! $ejemplares->links() !!}
                         </div>
                         </div>
                     </div>
