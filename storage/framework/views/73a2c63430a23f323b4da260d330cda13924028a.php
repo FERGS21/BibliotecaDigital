@@ -84,18 +84,24 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
-                        <div class="card-body">                          
-                                <div>
-                                    <div class="container mx-auto py-8   bg-[#688883]">
-                                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                            <?php $__currentLoopData = $libros; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $deslibro): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <?php echo e($deslibro->titulo); ?>
-
-                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                        </div>
-
-                                    </div>
-                                </div>
+                        <div class="card-body">   
+                            <div class="row"> 
+                                <?php $__currentLoopData = $libros; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $libro): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <div class="col-md-3 col-xl-3">
+                                        <div class="card bg-c-orange order-card">
+                                            <div class="card-block">
+                                                <h5><?php echo e($libro->titulo); ?></h5>   
+                                                <h6 class="text-right">
+                                                    <?php echo e($libro->edicion->no_edicion); ?></h4>
+                                                <?php $__currentLoopData = $libro->autores; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $autor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <h6 class="text-right"><?php echo e($autor->nombre.' '.$autor->ap.' '.$autor->am.', '); ?></h6>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                <p class="m-b-0 text-right"><a href="/prestamos/create" class="text-white">Ejemplares</a></p>
+                                            </div>
+                                        </div> 
+                                    </div> 
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>         
+                            </div>
                         </div>
                     </div>
                 </div>

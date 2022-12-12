@@ -84,17 +84,24 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
-                        <div class="card-body">                          
-                                <div>
-                                    <div class="container mx-auto py-8   bg-[#688883]">
-                                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                            @foreach($libros as $deslibro)
-                                                {{$deslibro->titulo}}
-                                            @endforeach
-                                        </div>
-
-                                    </div>
-                                </div>
+                        <div class="card-body">   
+                            <div class="row"> 
+                                @foreach($libros as $libro)
+                                    <div class="col-md-3 col-xl-3">
+                                        <div class="card bg-c-orange order-card">
+                                            <div class="card-block">
+                                                <h5>{{$libro->titulo}}</h5>   
+                                                <h6 class="text-right">
+                                                    {{$libro->edicion->no_edicion}}</h4>
+                                                @foreach ($libro->autores as $autor)
+                                                <h6 class="text-right">{{$autor->nombre.' '.$autor->ap.' '.$autor->am.', '}}</h6>
+                                                @endforeach
+                                                <p class="m-b-0 text-right"><a href="/prestamos/create" class="text-white">Ejemplares</a></p>
+                                            </div>
+                                        </div> 
+                                    </div> 
+                                @endforeach         
+                            </div>
                         </div>
                     </div>
                 </div>
