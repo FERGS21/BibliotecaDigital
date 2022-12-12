@@ -26,6 +26,7 @@
                                     <th style="color:#fff;">Editorial</th>
                                     <th style="color:#fff;">Edicion</th>
                                     <th style="color:#fff;">Area</th> 
+                                    <th style="color:#fff;">Autor(s)</th> 
                                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('crear-libro')): ?>                                   
                                     <th style="color:#fff;">Acciones</th>   
                                     <?php endif; ?>                                                                
@@ -41,6 +42,12 @@
                                 <td><?php echo e($libro->editorial->nombre_editorial); ?></td>
                                 <td><?php echo e($libro->edicion->no_edicion); ?></td>
                                 <td><?php echo e($libro->area->nombre_area); ?></td>
+                                <td>
+                                     <?php $__currentLoopData = $libro->autores; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $autor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php echo e($autor->nombre.' '.$autor->ap.' '.$autor->am.', '); ?>
+
+                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </td>
 
                                 <td>
                                     <form action="<?php echo e(route('libros.destroy',$libro->id)); ?>" method="POST">                                        

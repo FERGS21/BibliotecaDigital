@@ -26,6 +26,7 @@
                                     <th style="color:#fff;">Editorial</th>
                                     <th style="color:#fff;">Edicion</th>
                                     <th style="color:#fff;">Area</th> 
+                                    <th style="color:#fff;">Autor(s)</th> 
                                     @can('crear-libro')                                   
                                     <th style="color:#fff;">Acciones</th>   
                                     @endcan                                                                
@@ -41,6 +42,11 @@
                                 <td>{{ $libro->editorial->nombre_editorial }}</td>
                                 <td>{{ $libro->edicion->no_edicion }}</td>
                                 <td>{{ $libro->area->nombre_area }}</td>
+                                <td>
+                                     @foreach ($libro->autores as $autor)
+                                        {{$autor->nombre.' '.$autor->ap.' '.$autor->am.', '}}
+                                     @endforeach
+                                </td>
 
                                 <td>
                                     <form action="{{ route('libros.destroy',$libro->id) }}" method="POST">                                        
