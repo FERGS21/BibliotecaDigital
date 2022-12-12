@@ -40,6 +40,12 @@
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-3">
                                 <div class="form-group">
+                                    <label for="cantidad" >Cantidad</label>
+                                    <input type="text" name="cantidad" class="form-control" value="1" required >
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-3">
+                                <div class="form-group">
                                    <label for="Copia">Copia</label>
                                    <input type="text" name="copia" class="form-control">
                                 </div>

@@ -46,5 +46,7 @@ Route::group(['middleware'=>['auth']],function () {
     Route::resource('libros', LibroController::class);
     Route::resource('asignaautores', AsignaautoreController::class);
     Route::resource('ejemplares', EjemplareController::class);
+    Route::put('prestamos/{ejemplar}', 'PrestamoController@devolucion')->name('prestamos.devolver');
     Route::resource('prestamos', PrestamoController::class);
+
 });

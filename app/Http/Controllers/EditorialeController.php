@@ -50,7 +50,7 @@ class EditorialeController extends Controller
         ]);
         
         Editoriale::create($request->all());
-        return redirect()->route('libros.index');
+        return redirect()->route('libros.create');
     }
     
 

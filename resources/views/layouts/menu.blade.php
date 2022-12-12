@@ -15,6 +15,22 @@
     </a>
     @endcan
 
+    @can('ver-libro')
+    <a class="nav-link" href="/libros">
+        <i class="fa fa-book f-left" ></i><span>Libros</span>
+    </a>
+    @endcan
+    @can('ver-ejemplar')
+    <a class="nav-link" href="/ejemplares">
+        <i class="fa fa-book f-left" ></i><span>Ejemplares</span>
+    </a>
+    @endcan
+    @can('ver-prestamo')
+    <a class="nav-link" href="/prestamos">
+        <i class="fa fa-book f-left" ></i><span>Prestamos</span>
+    </a>
+    @endcan
+
     @can('ver-edicion')
     <a class="nav-link" href="/ediciones">
         <i class="fas fa-user-edit"></i>  <span>Ediciones</span>
@@ -40,21 +56,7 @@
     @endcan
 
     
-    @can('ver-libro')
-    <a class="nav-link" href="/libros">
-        <i class="fa fa-book f-left" ></i><span>Libros</span>
-    </a>
-    @endcan
-    @can('ver-ejemplar')
-    <a class="nav-link" href="/ejemplares">
-        <i class="fa fa-book f-left" ></i><span>Ejemplares</span>
-    </a>
-    @endcan
-    @can('ver-prestamo')
-    <a class="nav-link" href="/prestamos">
-        <i class="fa fa-book f-left" ></i><span>Prestamos</span>
-    </a>
-    @endcan
+
 
 
 </li>

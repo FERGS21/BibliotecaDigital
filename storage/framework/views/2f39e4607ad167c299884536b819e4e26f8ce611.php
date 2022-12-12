@@ -38,17 +38,8 @@
                                 <td><?php echo e($prestamo->fecha_prestamo); ?></td>
                                 <td><?php echo e($prestamo->fecha_devolucion ?? 'Prestado'); ?></td>
                                 <td>
-                                    <form action="<?php echo e(route('prestamos.destroy',$prestamo->id)); ?>" method="POST">                                        
-                                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('editar-prestamo')): ?>
-                                        <a class="btn btn-info" href="<?php echo e(route('prestamos.edit',$prestamo->id)); ?>">Editar</a>
-                                        <?php endif; ?>
+                                                                           
 
-                                        <?php echo csrf_field(); ?>
-                                        <?php echo method_field('DELETE'); ?>
-                                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('borrar-prestamo')): ?>
-                                        <button type="submit" class="btn btn-danger">Borrar</button>
-                                        <?php endif; ?>
-                                    </form>
                                 </td>
                             </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

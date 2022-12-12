@@ -30,6 +30,10 @@ class PrestamoController extends Controller
      */
     public function index()
     {
+        //eloquen
+       // $prestamos = Prestamo::with('usuario:id,name','ejemplar')->get();
+        //dd($prestamos);
+        //return view ('prestamos.index',compact('prestamos'));
         $prestamos = Prestamo::paginate(10);
         return view ('prestamos.index',compact('prestamos'));
 
@@ -91,59 +95,9 @@ class PrestamoController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id_ejemplar)
+    public function update(Request $request, Prestamo $ejemplare_id)
     {
-        //
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Ejemplare $ejemplare)
-    {
-        $libros=Libro::pluck('titulo','id');
-
-        return view('ejemplares.editar',compact('ejemplare', 'libros'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Ejemplare $ejemplare)
-    {
-        request()-> validate([
-            'id_libro'=> 'required',
-            'copia'=> 'required',
-        ]);
-
-        $ejemplare ->update($request->all());
-
-        return redirect()->route('ejemplares.index');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Ejemplare $ejemplare)
-    {
-        $ejemplare->delete();
-    
-        return redirect()->route('ejemplares.index');
-    }
 }

@@ -8,6 +8,7 @@ use App\Models\Edicione;
 use App\Models\Editoriale;
 use App\Models\Area;
 use App\Models\Autore;
+use App\Models\Asignaautore;
 
 
 class LibroController extends Controller

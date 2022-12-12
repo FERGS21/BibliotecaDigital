@@ -36,7 +36,7 @@
                                         <option value="">Selecciona un ejemplar</option>
                                         @foreach($ejemplares as $ejemplar)
                                             @if($ejemplar->cantidad > $ejemplar->prestamo_count)
-                                                <option value="{{$ejemplar->id}}">{{$ejemplar->copia}}</option>
+                                                <option value="{{$ejemplar->id}}">{{$ejemplar->copia.' ('.$ejemplar->libro->titulo.')'}}</option>
                                            
                                             @endif
                                         @endforeach

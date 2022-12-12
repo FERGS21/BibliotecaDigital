@@ -57,11 +57,12 @@ class EjemplareController extends Controller
         $rules = [
             'id_libro'=> 'required ',
             'copia'=> 'required | min:3',
+            'cantidad'=>'required|integer',
         ];
         $this->validate($request, $rules);
         
         Ejemplare::create(
-            $request->only('id_libro','copia')
+            $request->only('id_libro','copia','cantidad')
         );
 
         return redirect()->route('ejemplares.index');
@@ -104,6 +105,7 @@ class EjemplareController extends Controller
         request()-> validate([
             'id_libro'=> 'required',
             'copia'=> 'required',
+            'cantidad'=> 'required',
         ]);
 
         $ejemplare ->update($request->all());

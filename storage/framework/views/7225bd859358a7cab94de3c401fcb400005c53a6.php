@@ -36,7 +36,7 @@
                                         <option value="">Selecciona un ejemplar</option>
                                         <?php $__currentLoopData = $ejemplares; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ejemplar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <?php if($ejemplar->cantidad > $ejemplar->prestamo_count): ?>
-                                                <option value="<?php echo e($ejemplar->id); ?>"><?php echo e($ejemplar->copia); ?></option>
+                                                <option value="<?php echo e($ejemplar->id); ?>"><?php echo e($ejemplar->copia.' ('.$ejemplar->libro->titulo.')'); ?></option>
                                            
                                             <?php endif; ?>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

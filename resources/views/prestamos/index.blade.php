@@ -38,17 +38,8 @@
                                 <td>{{ $prestamo->fecha_prestamo }}</td>
                                 <td>{{ $prestamo->fecha_devolucion ?? 'Prestado'}}</td>
                                 <td>
-                                    <form action="{{ route('prestamos.destroy',$prestamo->id) }}" method="POST">                                        
-                                        @can('editar-prestamo')
-                                        <a class="btn btn-info" href="{{ route('prestamos.edit',$prestamo->id) }}">Editar</a>
-                                        @endcan
+                                                                           
 
-                                        @csrf
-                                        @method('DELETE')
-                                        @can('borrar-prestamo')
-                                        <button type="submit" class="btn btn-danger">Borrar</button>
-                                        @endcan
-                                    </form>
                                 </td>
                             </tr>
                             @endforeach
