@@ -46,7 +46,7 @@
                                    <input type="text" name="isbn" class="form-control">
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-3">
+                            <div class="col-xs-12 col-sm-12 col-md-2">
                                 <div class="form-group">
                                    <label for="titulo">Año de Edicion</label>
                                    <input type="text" name="anio_edicion" class="form-control">
@@ -67,7 +67,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-xs-12 col-sm-12 col-md-3">
+                            <div class="col-xs-12 col-sm-12 col-md-2">
                                 <div class="form-group">
                                     {{ Form::label('Edicion') }}
                                     {{ Form::select('id_edicion', $ediciones, $libro->id_edicion, ['class' => 'form-control' . ($errors->has('id_edicion') ? ' is-invalid' : ''), 'placeholder' => 'Selecciona']) }}
@@ -95,7 +95,7 @@
                                 @endcan
                                 </div>
                             </div>
-                            <div class=" col-xs-12 col-sm-12 col-md-7">
+                            <div class=" col-xs-12 col-sm-12 col-md-8">
                                 <div class="form-group">
                                     {{ Form::label('Selecciona Autor(es)') }}
                                     <select title="Seleccionar autor(es)" name="autores[]" id="autores" class="select2 form-control"   multiple require>
@@ -110,6 +110,12 @@
                                 @can('crear-autor')
                                 <a class="fa fa-book f-left" href="{{ route('autores.create') }}">+</a>
                                 @endcan
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-2">
+                                <div class="form-group">
+                                   <label for="titulo">Numero de Copias</label>
+                                   <input type="text" name="copia" class="form-control">
                                 </div>
                             </div>
                             <div class=" col-xs-12 col-sm-12 col-md-5"></div>

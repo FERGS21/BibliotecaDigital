@@ -8,6 +8,7 @@ use App\Models\Edicione;
 use App\Models\Editoriale;
 use App\Models\Area;
 use App\Models\Autore;
+use App\Models\Ejemplare;
 use App\Models\Asignaautore;
 
 
@@ -59,6 +60,7 @@ class LibroController extends Controller
     public function store(Request $request)
     {
         
+        
         $rules = [
             'titulo'=> 'required | min:3',
             'no_paginas'=> 'required',
@@ -73,9 +75,14 @@ class LibroController extends Controller
         $libro=Libro::create(
             $request->only('titulo','no_paginas','isbn','anio_edicion','id_editorial','id_edicion','id_area')
         );
-
+        
         $libro->autores()->attach($request->input('autores'));
+        $cantidad="1";
+        for($i=1;$i<=$request->copia  ; $i++)
+        {
 
+            Ejemplare::create(['id_libro'=>$libro->id,'copia'=>$i,'cantidad'=>$cantidad]);
+        }
         return redirect()->route('libros.index');
 
     }
