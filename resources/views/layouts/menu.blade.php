@@ -16,8 +16,11 @@
     @endcan
 
     @can('ver-libro')
+    <a  href="{{ route('libros.create') }}">
+        <i class="fa fa-book f-left" ></i><span>Crear Libro</span>
+    </a>  
     <a class="nav-link" href="/libros">
-        <i class="fa fa-book f-left" ></i><span>Libros</span>
+        <i class="fa fa-book f-left" ></i><span>Lista de Libros</span>
     </a>
     @endcan
     @can('ver-ejemplar')
@@ -30,7 +33,7 @@
         <i class="fa fa-book f-left" ></i><span>Prestamos</span>
     </a>
     @endcan
-
+<!--
     @can('ver-edicion')
     <a class="nav-link" href="/ediciones">
         <i class="fas fa-user-edit"></i>  <span>Ediciones</span>
@@ -55,7 +58,7 @@
     </a>
     @endcan
 
-    
+-->  
 
 
 

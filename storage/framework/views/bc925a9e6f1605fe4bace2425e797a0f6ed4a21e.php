@@ -16,8 +16,11 @@
     <?php endif; ?>
 
     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('ver-libro')): ?>
+    <a  href="<?php echo e(route('libros.create')); ?>">
+        <i class="fa fa-book f-left" ></i><span>Crear Libro</span>
+    </a>  
     <a class="nav-link" href="/libros">
-        <i class="fa fa-book f-left" ></i><span>Libros</span>
+        <i class="fa fa-book f-left" ></i><span>Lista de Libros</span>
     </a>
     <?php endif; ?>
     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('ver-ejemplar')): ?>
@@ -30,7 +33,7 @@
         <i class="fa fa-book f-left" ></i><span>Prestamos</span>
     </a>
     <?php endif; ?>
-
+<!--
     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('ver-edicion')): ?>
     <a class="nav-link" href="/ediciones">
         <i class="fas fa-user-edit"></i>  <span>Ediciones</span>
@@ -55,7 +58,7 @@
     </a>
     <?php endif; ?>
 
-    
+-->  
 
 
 

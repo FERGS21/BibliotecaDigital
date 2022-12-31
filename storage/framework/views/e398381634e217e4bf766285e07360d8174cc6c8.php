@@ -7,23 +7,27 @@
         </div>
         <div class="section-body">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                
-            
+                        <div class="pagination justify-content-end">
+                            <?php echo $ejemplares->links(); ?>
+
+                        </div>
+            <!--
                         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('crear-ejemplar')): ?>
                         <a class="btn btn-warning" href="<?php echo e(route('ejemplares.create')); ?>">Nuevo</a>
                         <?php endif; ?>
-            
+            -->
                         <table class="table table-striped mt-2">
                                 <thead style="background-color:#6777ef">                                     
                                     <th style="display: none;">ID</th>
                                     <th style="color:#fff;">Libro</th>
-                                    <th style="color:#fff;">Copia</th> 
+                                    <th style="color:#fff;">Copia</th>
+                                    <!-- 
                                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('crear-ejemplar')): ?>                                   
                                     <th style="color:#fff;">Acciones</th>   
-                                    <?php endif; ?>                                                                
+                                    <?php endif; ?>       -->                                                         
                               </thead>
                               <tbody>
                             <?php $__currentLoopData = $ejemplares; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ejemplar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -31,7 +35,7 @@
                                 <td style="display: none;"><?php echo e($ejemplar->id); ?></td>                                
                                 <td><?php echo e($ejemplar->libro->titulo); ?></td>
                                 <td><?php echo e($ejemplar->copia); ?></td>
-
+                                <!--
                                 <td>
                                     <form action="<?php echo e(route('ejemplares.destroy',$ejemplar->id)); ?>" method="POST">                                        
                                         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('editar-ejemplar')): ?>
@@ -44,7 +48,7 @@
                                         <button type="submit" class="btn btn-danger">Borrar</button>
                                         <?php endif; ?>
                                     </form>
-                                </td>
+                                </td>-->
                             </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
