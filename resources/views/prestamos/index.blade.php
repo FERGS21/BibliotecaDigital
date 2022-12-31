@@ -13,10 +13,10 @@
                 
             
                         @can('crear-prestamo')
-                        <a class="btn btn-warning" href="{{ route('prestamos.create') }}">Nuevo</a>
+                        <a class="btn btn-warning" href="{{ url('prestamos/crear') }}">Prestar libro</a>
                         @endcan
             
-                        <table class="table table-striped mt-2">
+                        <table class="table table-striped mt-2" id="table-data">
                                 <thead style="background-color:#6777ef">                                     
                                     <th style="display: none;">ID</th>
                                     <th style="color:#fff;">Libro</th>
@@ -29,17 +29,20 @@
                                     @endcan                                                                
                               </thead>
                               <tbody>
-                            @foreach ($prestamos as $prestamo)
+                            @foreach ($prestamos as $data)
                             <tr>
-                                <td style="display: none;">{{ $prestamo->id }}</td>                                
-                                <td>{{ $prestamo->ejemplar->libro->titulo }}</td>
-                                <td>{{ $prestamo->ejemplar->copia }}</td>
-                                <td>{{ $prestamo->usuario->name }}</td>
-                                <td>{{ $prestamo->fecha_prestamo }}</td>
-                                <td>{{ $prestamo->fecha_devolucion ?? 'Prestado'}}</td>
+                                <td style="display: none;">{{ $data->id }}</td>                                
+                                <td>{{ $data->ejemplar->libro->titulo }}</td>
+                                <td>{{ $data->ejemplar->copia }}</td>
+                                <td>{{ $data->usuario->name }}</td>
+                                <td>{{ $data->fecha_prestamo }}</td>
+                                <td class="fecha-devolucion">{{ $data->fecha_devolucion ?? 'Prestado'}}</td>
                                 <td>
-                                                                           
-
+                                    @if(!$data->fecha_devolucion)
+                                        <a href="{{route('libro-prestamo.devolver', $data->ejemplar->id)}}" class="libro-devolucion btn-accion-tabla tooltipsC" title="Devolver este libro">
+                                            <i class="fa fa-fw fa-reply-all"></i>
+                                        </a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach
@@ -56,4 +59,33 @@
             </div>
         </div>
     </section>
+    <script>
+        $(document).ready(function () {
+            $('.libro-devolucion').on('click', function (event) {
+                event.preventDefault();
+                const url = $(this).attr('href');
+                const data = {
+                    _token: $('input[name=_token]').val(),
+                    _method: 'put'
+                }
+                ajaxRequest(data, url, $(this));
+            });
+
+            function ajaxRequest(data, url, link){
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: data,
+                    success: function (respuesta) {
+                        const fecha = respuesta.fecha_devolucion;
+                        link.closest('tr').find('td.fecha-devolucion').text(fecha);
+                        link.remove();
+                    },
+                    error: function () {
+
+                    }
+                });
+            }
+        });
+    </script>
 @endsection

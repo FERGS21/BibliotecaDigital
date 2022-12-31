@@ -46,7 +46,8 @@ Route::group(['middleware'=>['auth']],function () {
     Route::resource('libros', LibroController::class);
     Route::resource('asignaautores', AsignaautoreController::class);
     Route::resource('ejemplares', EjemplareController::class);
-    Route::put('prestamos/{ejemplar}', 'PrestamoController@devolucion')->name('prestamos.devolver');
-    Route::resource('prestamos', PrestamoController::class);
-
+    Route::get('/prestamos',[PrestamoController::class, 'index'])->name('prestamos');
+    Route::get('/prestamos/crear',[PrestamoController::class, 'create']);
+    Route::post('/prestamos/crear',[PrestamoController::class, 'store']);
+    Route::put('/libro-prestamo/{ejemplar}',[PrestamoController::class, 'devolucion' ])->name('libro-prestamo.devolver');
 });

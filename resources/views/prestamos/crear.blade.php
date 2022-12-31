@@ -25,7 +25,7 @@
                             </div>
                         @endif
 
-                    <form action="{{ route('prestamos.store') }}" method="POST">
+                    <form action="{{ url('/prestamos/crear') }}" method="POST">
                         @csrf
                         <div class="row">
 

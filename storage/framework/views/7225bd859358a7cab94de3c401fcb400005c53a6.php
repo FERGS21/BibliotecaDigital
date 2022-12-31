@@ -25,7 +25,7 @@
                             </div>
                         <?php endif; ?>
 
-                    <form action="<?php echo e(route('prestamos.store')); ?>" method="POST">
+                    <form action="<?php echo e(url('/prestamos/crear')); ?>" method="POST">
                         <?php echo csrf_field(); ?>
                         <div class="row">
 

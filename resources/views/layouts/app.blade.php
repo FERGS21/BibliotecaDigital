@@ -17,8 +17,8 @@
     <!-- Selectores-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-     <!--scrips-->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.7/dist/umd/popper.min.js"></script>  
+     <!--scrips
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.7/dist/umd/popper.min.js"></script>  -->
 
 
     

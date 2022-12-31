@@ -35,7 +35,7 @@ class PrestamoController extends Controller
         //dd($prestamos);
         //return view ('prestamos.index',compact('prestamos'));
         $prestamos = Prestamo::paginate(10);
-        return view ('prestamos.index',compact('prestamos'));
+        return view ('prestamos.index', compact('prestamos'));
 
     }
 
@@ -91,13 +91,21 @@ class PrestamoController extends Controller
             $request->only('id_ejemplar','id_usuario','fecha_prestamo')
         );
         */
-        return redirect()->route('prestamos.index');
+        return redirect()->route('prestamos');
 
     }
 
-    public function update(Request $request, Prestamo $ejemplare_id)
+    public function devolucion(Request $request, $ejemplare_id)
     {
-
+        if($request->ajax()){
+            //dd($request->all());
+            Prestamo::where('ejemplare_id',$ejemplare_id)
+            ->whereNull('fecha_devolucion')
+            ->update( [  'fecha_devolucion' => date('Y-m-d') ] );
+            return response()->json(['fecha_devolucion'=>date('Y-m-d')]);
+        }else{
+            abort(404);
+        }
     }
 
 }
