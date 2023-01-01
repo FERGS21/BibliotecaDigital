@@ -16,11 +16,14 @@ class CreatePrestamosTable extends Migration
         Schema::create('prestamos', function (Blueprint $table) {
             $table->bigIncrements('id');
             //ejemplares
-            $table->unsignedBigInteger('id_ejemplar');
-            $table->foreign('id_ejemplar')->references('id')->on('ejemplares')->onDelete("cascade");
+            $table->unsignedBigInteger('ejemplare_id');
+            $table->foreign('ejemplare_id')->references('id')->on('ejemplares')->onDelete("cascade");
             //usuarios
             $table->unsignedBigInteger('id_usuario');
             $table->foreign('id_usuario')->references('id')->on('users')->onDelete("cascade");
+            /*crearlos de forma manual en base de datos
+            $table->timestamps('fecha_prestamo');
+            $table->timestamps('fecha_devoluvion');*/
             $table->timestamps();
 
         });

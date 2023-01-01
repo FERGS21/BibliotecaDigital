@@ -20,6 +20,7 @@ class CreateEjemplaresTable extends Migration
             $table->foreign('id_libro')->references('id')->on('libros')->onDelete("cascade");
             //copia 
             $table->string('copia');
+            $table->Integer('cantidad');
             $table->timestamps();
         });
     }
