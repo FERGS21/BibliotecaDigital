@@ -4138,6 +4138,9 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 .order-card {
     color: #fff;
 }
+.black-card {
+    color: rgb(94, 94, 94);
+}
 .bg-c-blue {
     background: linear-gradient(45deg,#73b4ff, #4099ff);
 }
@@ -4149,6 +4152,9 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 }
 .bg-c-orange {
     background: linear-gradient(45deg,#3bb557, #47c363);
+}
+.bg-c-gray {
+    background: linear-gradient(45deg,#c7c7c7, #bdbdbd);
 }
 .card {    
     -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);

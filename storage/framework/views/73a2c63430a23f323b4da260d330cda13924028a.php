@@ -12,7 +12,7 @@
                     <div class="card">
                         <div class="card-body">                         
                                 <div class="row">
-                                    <a href="/homr">TODAS</a>  
+                                    <a href="/home">TODAS</a>  
                                     <?php $__currentLoopData = $areas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $area): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <a href="" class="ml-4"><?php echo e($area->nombre_area); ?></a>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -25,12 +25,19 @@
         <div class="section-body">
             <div class="row">
                 <div class="col-lg-12">
+                    
+
                     <div class="card">
-                        <div class="card-body">   
+                            <div class="card-body">   
+                            <!-- Ubicamos la paginacion a la derecha -->
+                            <div class="pagination justify-content-end">
+                                <?php echo $ejemplares->links(); ?>
+
+                            </div>
                             <div class="row"> 
                                 <?php $__currentLoopData = $ejemplares; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ejemplar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <div class="col-md-3 col-xl-3">
-                                        <div class="card bg-c-orange order-card">
+                                        <div class="card bg-c-gray black-card">
                                             <div class="card-block">
                                                 <h6><?php echo e($ejemplar->libro->titulo); ?></h5> 
                                                 <?php $__currentLoopData = $imagenes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $imagen): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -42,6 +49,12 @@
                                         </div> 
                                     </div> 
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>         
+                            </div>
+                            <div class="card-body">   
+                            <!-- Ubicamos la paginacion a la derecha -->
+                            <div class="pagination justify-content-end">
+                                <?php echo $ejemplares->links(); ?>
+
                             </div>
                         </div>
                     </div>
