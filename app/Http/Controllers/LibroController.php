@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Models\Libro;
 use App\Models\Edicione;
@@ -10,6 +11,8 @@ use App\Models\Area;
 use App\Models\Autore;
 use App\Models\Ejemplare;
 use App\Models\Asignaautore;
+use App\Models\Image;
+use File;
 
 
 class LibroController extends Controller
@@ -30,7 +33,8 @@ class LibroController extends Controller
     public function index()
     {
         $libros = Libro::paginate(10);
-        return view ('libros.index',compact('libros'));
+        $imagenes = Image::all();
+        return view ('libros.index',compact('libros','imagenes'));
 
     }
 
@@ -69,20 +73,39 @@ class LibroController extends Controller
             'id_editorial'=> 'required',
             'id_edicion'=> 'required',
             'id_area'=> 'required',
+            //'autores[]'=> 'required',
+            'copia' => 'required',
+            'descripcion' => 'required',
         ];
         $this->validate($request, $rules);
-        
+
         $libro=Libro::create(
-            $request->only('titulo','no_paginas','isbn','anio_edicion','id_editorial','id_edicion','id_area')
+            $request->only('titulo','no_paginas','isbn','anio_edicion','id_editorial',
+            'id_edicion','id_area','descripcion')
         );
-        
+
+
         $libro->autores()->attach($request->input('autores'));
+        
         $cantidad="1";
         for($i=1;$i<=$request->copia  ; $i++)
         {
 
             Ejemplare::create(['id_libro'=>$libro->id,'copia'=>$i,'cantidad'=>$cantidad]);
         }
+///////////////////////////////////////////////////////////////////
+        if($request->hasFile("images")){
+            $files=$request->file("images");
+            foreach($files as $file)
+            $imageName=time().''.$file->getClientOriginalName();
+            $request['libro_id']=$libro->id;
+            $request['image']=$imageName;
+            $file->move(\public_path("/images"),$imageName);
+            Image::create($request->all());
+            
+        }
+///////////////////////////////////////////////////////////////////
+
         return redirect()->route('libros.index');
 
     }
@@ -142,10 +165,31 @@ class LibroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Libro $libro)
+    public function destroy($id)
     {
-        $libro->delete();
-    
+        
+        $libros=Libro::findOrFail($id);
+
+        $images=Image::where("libro_id",$libros->id)->get();
+        foreach($images as $image){
+            if(File::exists("images/".$image->image)){
+                File::delete("images/".$image->image);
+            }
+        }
+        $libros->delete();
         return redirect()->route('libros.index');
     }
+    /*public function destroy(Libro $libro)
+    {
+        
+       // $libroi=Libro::findOrFail($libro);
+        $images=Image::where("libro_id",$libro)->get();
+        foreach($images as $image){
+            if(File::exists("images/".$image->image)){
+                File::delete("images/".$image->image);
+            }
+        }
+        $libro->delete();
+        return redirect()->route('libros.index');
+    }*/
 }

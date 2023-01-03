@@ -20,13 +20,15 @@
                                 <thead style="background-color:#6777ef">                                     
                                     <th style="display: none;">ID</th>
                                     <th style="color:#fff;">Titulo</th>
-                                    <th style="color:#fff;">Paginas</th> 
+                                    <!--<th style="color:#fff;">Paginas</th> 
                                     <th style="color:#fff;">ISBN</th>
                                     <th style="color:#fff;">Año Edicion</th>
                                     <th style="color:#fff;">Editorial</th>
                                     <th style="color:#fff;">Edicion</th>
                                     <th style="color:#fff;">Area</th> 
-                                    <th style="color:#fff;">Autor(s)</th> 
+                                    <th style="color:#fff;">Autor(s)</th> -->
+                                    <th style="color:#fff;">Descripcion</th>
+                                    <th style="color:#fff;">Imagen</th>
                                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('crear-libro')): ?>                                   
                                     <th style="color:#fff;">Acciones</th>   
                                     <?php endif; ?>                                                                
@@ -36,7 +38,7 @@
                             <tr>
                                 <td style="display: none;"><?php echo e($libro->id); ?></td>                                
                                 <td><?php echo e($libro->titulo); ?></td>
-                                <td><?php echo e($libro->no_paginas); ?></td>
+                               <!-- <td><?php echo e($libro->no_paginas); ?></td>
                                 <td><?php echo e($libro->isbn); ?></td>
                                 <td><?php echo e($libro->anio_edicion); ?></td>
                                 <td><?php echo e($libro->editorial->nombre_editorial); ?></td>
@@ -47,7 +49,17 @@
                                         <?php echo e($autor->nombre.' '.$autor->ap.' '.$autor->am.', '); ?>
 
                                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </td>-->
+                                <td><?php echo e($libro->descripcion); ?></td>
+                                <td>
+                                <?php $__currentLoopData = $imagenes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $imagen): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($imagen->id == $libro->id): ?>
+                                    <img src="images/<?php echo e($imagen->image); ?>" class="img-responsive" style="max-height:200px; max-width:200px">
+                                    <?php endif; ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </td>
+
+                                
 
                                 <td>
                                     <form action="<?php echo e(route('libros.destroy',$libro->id)); ?>" method="POST">                                        
@@ -58,7 +70,8 @@
                                         <?php echo csrf_field(); ?>
                                         <?php echo method_field('DELETE'); ?>
                                         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('borrar-libro')): ?>
-                                        <button type="submit" class="btn btn-danger">Borrar</button>
+                                        <!-- onclick confirmacion --> 
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure')">Borrar</button>
                                         <?php endif; ?>
                                     </form>
                                 </td>

@@ -18,6 +18,7 @@ class Libro extends Model
         'id_editorial',
         'id_edicion',
         'id_area',
+        'descripcion',
     ];
 
     public function editorial()
@@ -36,5 +37,8 @@ class Libro extends Model
     }
     public function autores(){
         return $this->belongsToMany(Autore::class);
+    }
+    public function images(){
+        return $this->hasMany(Image::class);
     }
 }

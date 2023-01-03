@@ -20,13 +20,15 @@
                                 <thead style="background-color:#6777ef">                                     
                                     <th style="display: none;">ID</th>
                                     <th style="color:#fff;">Titulo</th>
-                                    <th style="color:#fff;">Paginas</th> 
+                                    <!--<th style="color:#fff;">Paginas</th> 
                                     <th style="color:#fff;">ISBN</th>
                                     <th style="color:#fff;">Año Edicion</th>
                                     <th style="color:#fff;">Editorial</th>
                                     <th style="color:#fff;">Edicion</th>
                                     <th style="color:#fff;">Area</th> 
-                                    <th style="color:#fff;">Autor(s)</th> 
+                                    <th style="color:#fff;">Autor(s)</th> -->
+                                    <th style="color:#fff;">Descripcion</th>
+                                    <th style="color:#fff;">Imagen</th>
                                     @can('crear-libro')                                   
                                     <th style="color:#fff;">Acciones</th>   
                                     @endcan                                                                
@@ -36,7 +38,7 @@
                             <tr>
                                 <td style="display: none;">{{ $libro->id }}</td>                                
                                 <td>{{ $libro->titulo }}</td>
-                                <td>{{ $libro->no_paginas }}</td>
+                               <!-- <td>{{ $libro->no_paginas }}</td>
                                 <td>{{ $libro->isbn }}</td>
                                 <td>{{ $libro->anio_edicion}}</td>
                                 <td>{{ $libro->editorial->nombre_editorial }}</td>
@@ -46,7 +48,17 @@
                                      @foreach ($libro->autores as $autor)
                                         {{$autor->nombre.' '.$autor->ap.' '.$autor->am.', '}}
                                      @endforeach
+                                </td>-->
+                                <td>{{ $libro->descripcion }}</td>
+                                <td>
+                                @foreach ($imagenes as $imagen)
+                                    @if($imagen->id == $libro->id)
+                                    <img src="images/{{$imagen->image}}" class="img-responsive" style="max-height:200px; max-width:200px">
+                                    @endif
+                                @endforeach
                                 </td>
+
+                                
 
                                 <td>
                                     <form action="{{ route('libros.destroy',$libro->id) }}" method="POST">                                        
@@ -57,7 +69,8 @@
                                         @csrf
                                         @method('DELETE')
                                         @can('borrar-libro')
-                                        <button type="submit" class="btn btn-danger">Borrar</button>
+                                        <!-- onclick confirmacion --> 
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure')">Borrar</button>
                                         @endcan
                                     </form>
                                 </td>

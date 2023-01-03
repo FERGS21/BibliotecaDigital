@@ -23,6 +23,7 @@ class CreateLibrosTable extends Migration
             $table->bigInteger('id_editorial')->unsigned();
             $table->bigInteger('id_edicion')->unsigned();
             $table->bigInteger('id_area')->unsigned();
+            $table->text('descripcion');
             $table->timestamps();
 
             $table->foreign('id_editorial')->references('id')->on('editoriales')->onDelete("cascade");

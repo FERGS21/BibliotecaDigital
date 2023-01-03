@@ -25,7 +25,7 @@
                             </div>
                         <?php endif; ?>
 
-                    <form action="<?php echo e(route('libros.store')); ?>" method="POST">
+                    <form action="<?php echo e(route('libros.store')); ?>" method="POST"  enctype="multipart/form-data">
                         <?php echo csrf_field(); ?>
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-6">
@@ -134,6 +134,22 @@
                                    <input type="text" name="copia" class="form-control">
                                 </div>
                             </div>
+                            <!-- /////////////////////////////-->
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                <div class="form-group">
+                                   <label for="descripcion">Descripcion</label>
+                                    <textarea name="descripcion"  cols="20" rows="4" class="form-control m-2"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                <div class="form-group">
+                                   <label for="descripcion">Imagen</label>
+                                   <input type="file" id="input-file-now-custom-3" class="form-control m-2"  name="images[]" multiple>
+                                </div>
+                            </div>
+
+                            <!--////////////////////////////////////////-->
+
                             <div class=" col-xs-12 col-sm-12 col-md-5"></div>
                             <div class="col-xs-12 col-sm-12 col-md-2">
                                  <button type="submit" class="btn btn-primary">Guardar</button> 

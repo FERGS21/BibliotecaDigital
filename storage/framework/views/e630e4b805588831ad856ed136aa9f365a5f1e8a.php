@@ -95,6 +95,27 @@
                                     </select> 
                                 </div>                          
                             </div> 
+                            <div class="col-xs-12 col-sm-12 col-md-2">
+                                <div class="form-group">
+                                   <label for="titulo">Numero de Copias</label>
+                                   <input type="text" name="copia" class="form-control" >
+                                </div>
+                            </div>
+                            <!-- /////////////////////////////-->
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                <div class="form-group">
+                                   <label for="descripcion">Descripcion</label>
+                                    <textarea name="descripcion"  cols="20" rows="4" class="form-control m-2" value="<?php echo e($libro->descripcion); ?>"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                <div class="form-group">
+                                   <label for="descripcion">Imagen</label>
+                                   <input type="file" id="input-file-now-custom-3" class="form-control m-2"  name="images[]" multiple>
+                                </div>
+                            </div>
+
+                            <!--////////////////////////////////////////-->
                             <div class=" col-xs-12 col-sm-12 col-md-5"></div>
                             <div class="col-xs-12 col-sm-12 col-md-2">
                                  <button type="submit" class="btn btn-primary">Guardar</button> 
