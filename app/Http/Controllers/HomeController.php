@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Libro;
+use App\Models\Ejemplare;
+use App\Models\Area;
+use App\Models\Image;
 
 class HomeController extends Controller
 {
@@ -26,7 +29,10 @@ class HomeController extends Controller
     public function index(Request $request)
     {
 
-      $libros = Libro::paginate(10);
-      return view('home',compact('libros'));
+      //$libros = Libro::paginate(10);
+      $ejemplares=Ejemplare::paginate(12);
+      $areas=Area::all();
+      $imagenes=Image::all();
+      return view('home',compact('ejemplares','areas','imagenes'));
     }
 }
