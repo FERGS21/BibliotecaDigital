@@ -29,32 +29,43 @@
 
                     <div class="card">
                             <div class="card-body">   
-                            <!-- Ubicamos la paginacion a la derecha -->
-                            <div class="pagination justify-content-end">
-                                <?php echo $ejemplares->links(); ?>
 
-                            </div>
+                                               
+                    
                             <div class="row"> 
+                                
                                 <?php $__currentLoopData = $ejemplares; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ejemplar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php if($ejemplar->cantidad > $ejemplar->prestamo_count): ?>
                                     <div class="col-md-3 col-xl-3">
                                         <div class="card bg-c-gray black-card">
                                             <div class="card-block">
-                                                <h6><?php echo e($ejemplar->libro->titulo); ?></h5> 
-                                                <?php $__currentLoopData = $imagenes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $imagen): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                    <?php if($imagen->id == $ejemplar->libro->id): ?>
-                                                    <img src="images/<?php echo e($imagen->image); ?>" class="img-responsive" style="max-height:200px; max-width:200px">
-                                                    <?php endif; ?>
-                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                <form action="<?php echo e(url('/prestamos/crear')); ?>" method="POST">
+                                                    <?php echo csrf_field(); ?>
+                                                    <div>
+                                                        <h6><?php echo e($ejemplar->libro->titulo); ?></h5> 
+                                                        <?php $__currentLoopData = $imagenes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $imagen): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <?php if($imagen->id == $ejemplar->libro->id): ?>
+                                                            <img src="images/<?php echo e($imagen->image); ?>" class="img-responsive" style="max-height:200px; max-width:200px">
+                                                            <?php endif; ?>
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <select name="ejemplare_id" id="ejemplare_id" class="form-control">
+                                                             <option value="<?php echo e($ejemplar->id); ?>"><?php echo e($ejemplar->copia.' ('.$ejemplar->libro->titulo.')'); ?></option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="hidden" name="fecha_prestamo" class="form-control" value="<?php echo e(old('fecha_prestamo', date('y-m-d'))); ?>" required >
+                                                    </div>
+                                                    <div class=" mt-2">
+                                                        <button type="submit" class="btn btn-primary">Agregar a estante</button> 
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div> 
                                     </div> 
+                                <?php endif; ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>         
-                            </div>
-                            <div class="card-body">   
-                            <!-- Ubicamos la paginacion a la derecha -->
-                            <div class="pagination justify-content-end">
-                                <?php echo $ejemplares->links(); ?>
-
                             </div>
                         </div>
                     </div>

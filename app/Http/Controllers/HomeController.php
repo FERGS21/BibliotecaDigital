@@ -8,6 +8,7 @@ use App\Models\Libro;
 use App\Models\Ejemplare;
 use App\Models\Area;
 use App\Models\Image;
+use App\Models\Prestamo;
 
 class HomeController extends Controller
 {
@@ -28,11 +29,13 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-
-      //$libros = Libro::paginate(10);
-      $ejemplares=Ejemplare::paginate(12);
+      $ejemplares = Ejemplare::withCount(['prestamo'=>function($query )
+      {
+          $query->whereNull('fecha_devolucion');
+      }])->get();
       $areas=Area::all();
       $imagenes=Image::all();
+      
       return view('home',compact('ejemplares','areas','imagenes'));
     }
 }

@@ -3,57 +3,7 @@
         <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
     </ul>
 </form>
-<ul class="navbar-nav navbar-right">
 
-    <?php if(\Illuminate\Support\Facades\Auth::user()): ?>
-        <li class="dropdown">
-            <a href="#" data-toggle="dropdown"
-               class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                <div class="d-sm-none d-lg-inline-block">Clacificaciones</div>
-            </a>
-            
-            <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item has-icon edit-profile" href="" data-id="">
-                    Sistemas
-                </a>
-                <a class="dropdown-item has-icon edit-profile" href="" data-id="">
-                    Administracion
-                </a>
-                <a class="dropdown-item has-icon edit-profile" href="" data-id="">
-                    Forestal
-                </a>
-                <a class="dropdown-item has-icon edit-profile" href="" data-id="">
-                    Civil
-                </a>
-                <a class="dropdown-item has-icon edit-profile" href="" data-id="">
-                    Mecatronica
-                </a>
-            </div>
-
-        </li>
-    <?php else: ?>
-        <li class="dropdown"><a href="#" data-toggle="dropdown"
-                                class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                
-                <div class="d-sm-none d-lg-inline-block"><?php echo e(__('messages.common.hello')); ?></div>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right">
-                <div class="dropdown-title"><?php echo e(__('messages.common.login')); ?>
-
-                    / <?php echo e(__('messages.common.register')); ?></div>
-                <a href="<?php echo e(route('login')); ?>" class="dropdown-item has-icon">
-                    <i class="fas fa-sign-in-alt"></i> <?php echo e(__('messages.common.login')); ?>
-
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="<?php echo e(route('register')); ?>" class="dropdown-item has-icon">
-                    <i class="fas fa-user-plus"></i> <?php echo e(__('messages.common.register')); ?>
-
-                </a>
-            </div>
-        </li>
-    <?php endif; ?>
-</ul>
 
 <!--///////////////////////////////////////////////////////////////////////////////-->
 <ul class="navbar-nav navbar-right">

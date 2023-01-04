@@ -91,7 +91,7 @@ class PrestamoController extends Controller
             $request->only('id_ejemplar','id_usuario','fecha_prestamo')
         );
         */
-        return redirect()->route('prestamos');
+        return redirect()->route('home');
 
     }
 
