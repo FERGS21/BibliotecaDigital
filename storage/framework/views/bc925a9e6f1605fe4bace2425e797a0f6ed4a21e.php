@@ -23,11 +23,11 @@
         <i class="fa fa-book f-left" ></i><span>Lista de Libros</span>
     </a>
     <?php endif; ?>
-    
+    <!--
     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('ver-ejemplar')): ?>
     <a class="nav-link" href="/ejemplares">
         <i class="fa fa-book f-left" ></i><span>Ejemplares</span>
-    </a>
+    </a>-->
     <?php endif; ?>
     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('ver-prestamo')): ?>
     <a class="nav-link" href="/prestamos">

@@ -47,7 +47,7 @@
                                                         <h6>{{$ejemplar->libro->titulo}}</h5> 
                                                         @foreach ($imagenes as $imagen)
                                                             @if($imagen->id == $ejemplar->libro->id)
-                                                            <img src="images/{{$imagen->image}}" class="img-responsive" style="max-height:200px; max-width:200px">
+                                                            <img src="images/{{$imagen->image}}" class="img-responsive" style="max-height:180px; max-widt:h180px">
                                                             @endif
                                                         @endforeach
                                                     </div>
@@ -79,35 +79,77 @@
             </div>
         </div>
     </section>
-    <!--Modal para mostrar detalles-->
-    <!-- Modal -->
-<div class="modal fade" id="detallesModal" tabindex="-1" role="dialog" aria-labelledby="detalleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="detalleModalLabel">Detalles</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div>
-                                        <h6>{{$ejemplar->libro->titulo}}</h1>
-                                </div>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                                
-                            </div>   
-      </div>
-    </div>
-  </div>
-</div>
-    <script>
-        (function(){
-                    $('#detallesModal').modal(options)
-                    
-        });
-    </script>
+
+<body>
+    <div class="modal fade" id="detallesModal" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detalleModalLabel">Detalles</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div>
+                                <p>{{$ejemplar->libro->titulo}}</p>
+                            </div>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>                  
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <div class="modal fade" id="estanteModal" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detalleModalLabel">Detalles</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div>
+                                    <table class="table table-striped mt-2" id="table-data">
+                                        <thead style="background-color:#6777ef">                                     
+                                            <th style="display: none;">ID</th>
+                                            <th style="color:#fff;">Libro</th> 
+                                            @can('crear-prestamo')                                   
+                                            <th style="color:#fff;">Acciones</th>   
+                                            @endcan                                                                
+                                    </thead>
+                                    <tbody>
+                                    @foreach ($prestamos as $data)
+                                    <tr>
+                                        <td style="display: none;">{{ $data->id }}</td>                                
+                                        <td>{{ $data->ejemplar->libro->titulo }}</td>
+                                        <td>
+                                            @if(!$data->fecha_devolucion)
+                                                <a href="{{route('libro-prestamo.devolver', $data->ejemplar->id)}}" class="libro-devolucion btn-accion-tabla tooltipsC" title="Devolver este libro">
+                                                    <i class="fa fa-fw fa-reply-all"></i>
+                                                </a>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>                  
+                </div>
+            </div>
+        </div>
+    </div>   
+</body>
+
 
 @endsection

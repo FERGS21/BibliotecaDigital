@@ -35,7 +35,8 @@ class HomeController extends Controller
       }])->get();
       $areas=Area::all();
       $imagenes=Image::all();
+      $prestamos=Prestamo::all();
       
-      return view('home',compact('ejemplares','areas','imagenes'));
+      return view('home',compact('ejemplares','areas','imagenes','prestamos'));
     }
 }

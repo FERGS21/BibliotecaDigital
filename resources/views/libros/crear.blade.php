@@ -63,12 +63,9 @@
                                 <div>
                                 
                                 @can('crear-editorial')
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                <a class="fa fa-book f-left" data-toggle="modal" data-target="#modal1">
                                 +
-                                </button>
-                                <!--
-                                <a class="fa fa-book f-left" href="{{ route('editoriales.create') }}">+</a>-->
+                                </a>
                                 @endcan
                                 </div>
                             </div>
@@ -83,7 +80,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-1">
                                 <div>
                                 @can('crear-edicion')
-                                <a class="fa fa-book f-left" href="{{ route('ediciones.create') }}">+</a>
+                                    <a class="fa fa-book f-left" data-toggle="modal" data-target="#modal2">+</a>                                
                                 @endcan
                                 </div>
                             </div>
@@ -97,7 +94,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-1">
                                 <div>
                                 @can('crear-area')
-                                <a class="fa fa-book f-left" href="{{ route('areas.create') }}">+</a>
+                                    <a class="fa fa-book f-left" data-toggle="modal" data-target="#modal3">+</a> 
                                 @endcan
                                 </div>
                             </div>
@@ -114,7 +111,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-1">
                                 <div>
                                 @can('crear-autor')
-                                <a class="fa fa-book f-left" href="{{ route('autores.create') }}">+</a>
+                                    <a class="fa fa-book f-left" data-toggle="modal" data-target="#modal4">+</a>     
                                 @endcan
                                 </div>
                             </div>
@@ -155,42 +152,135 @@
 
 
 
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Crear Editorial</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <form action="{{ route('editoriales.store') }}" method="POST" >
+<body>
+    <!-- Modal -->
+    <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Crear Editorial</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('editoriales.store') }}" method="POST" >
                         @csrf
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                   <label for="titulo">Editorial</label>
-                                   <input type="text" name="nombre_editorial" class="form-control">
+                                    <label for="titulo">Editorial</label>
+                                    <input type="text" name="nombre_editorial" class="form-control">
                                 </div>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-primary">Guardar</button> 
-                            </div>   
+                            </div> 
+                        </div>  
                     </form>
-      </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
+    <!-- Modal2 -->
+    <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Crear Ediciones</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('ediciones.store') }}" method="POST">
+                        @csrf
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                   <label for="titulo">Numero de Edicion</label>
+                                   <input type="text" name="no_edicion" class="form-control">
+                                </div>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Guardar</button> 
+                            </div> 
+                        </div>  
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal3-->
+    <div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Crear Ediciones</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('areas.store') }}" method="POST">
+                        @csrf
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                   <label for="titulo">area</label>
+                                   <input type="text" name="nombre_area" class="form-control">
+                                </div>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Guardar</button> 
+                            </div>
+                        </div>   
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal4 -->
+    <div class="modal fade" id="modal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Crear Ediciones</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('autores.store') }}" method="POST">
+                        @csrf
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                   <label for="titulo">Nombre</label>
+                                   <input type="text" name="nombre" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                   <label for="titulo">Apellido Paterno</label>
+                                   <input type="text" name="ap" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                   <label for="titulo">Apellido Materno</label>
+                                   <input type="text" name="am" class="form-control">
+                                </div>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Guardar</button> 
+                            </div>
+                            
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 
-    <script>
-        (function(){
-            //$function(){
-               // $('#btn-editorial').on('click',function(){
-                    $('#exampleModal').modal(options)
-                //});
-            //}
-        });
-    </script>
+    
+</body>
+
+
 @endsection

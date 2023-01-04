@@ -5,11 +5,9 @@
 </form>
 
 <!--/////////////////////////////////////////////////////////////////////////////////////-->
-<div class="col-md-3 col-xl-3">
-    <a class="dropdown-item has-icon " data-toggle="modal" data-target="#" ><i
-                            class="fa fa-lock"> </i>Mi estante</a>
-</div>
-
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#estanteModal">
+                                                Mi estante
+                                            </button>
  
 <!--///////////////////////////////////////////////////////////////////////////////-->
 <ul class="navbar-nav navbar-right">
@@ -62,5 +60,6 @@
         </li>
     <?php endif; ?>
 </ul>
+
 
 <?php /**PATH C:\Users\FER\Documents\5TO_SEMESTRE\BASE_DE_DATOS\BibliotecaDigital\resources\views/layouts/header.blade.php ENDPATH**/ ?>
