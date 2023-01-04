@@ -66,10 +66,10 @@
                                 <div>
                                 
                                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('crear-editorial')): ?>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  +
-</button>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                +
+                                </button>
                                 <!--
                                 <a class="fa fa-book f-left" href="<?php echo e(route('editoriales.create')); ?>">+</a>-->
                                 <?php endif; ?>
